@@ -1,5 +1,7 @@
 package match;
 
+import core.RegexTest;
+
 /**
  * Created by Dzmitry Marudau on 29.10.2016.
  * TASK:
@@ -14,7 +16,7 @@ package match;
 
 public class MatchingStartAndEnd {
     public static void main(String[] args) {
-        Regex_Test tester = new Regex_Test();
+        RegexTest tester = new RegexTest();
         tester.checker("^\\d\\w{4}.$");
     }
 }
