@@ -1,3 +1,5 @@
+package challenges.week25;
+
 /**
  * User: Dzmitry Marudau
  *
