@@ -1,0 +1,1 @@
+Using different java.util.function(s)
