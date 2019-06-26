@@ -1,8 +1,9 @@
 package challenges.week25;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 /**
  * Created by Dzmitry Marudau on 04.11.2016.

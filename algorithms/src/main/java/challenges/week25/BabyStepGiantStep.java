@@ -1,6 +1,6 @@
 package challenges.week25;
 
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * Created by Dzmitry Marudau on 04.11.2016.
@@ -29,8 +29,8 @@ public class BabyStepGiantStep {
     }
 
     public static double distance(Pair<Double, Double> p1, Pair<Double, Double> p2) {
-        double x = p2.getKey() - p1.getKey();
-        double y = p2.getValue() - p1.getValue();
+        double x = p2.getLeft() - p1.getLeft();
+        double y = p2.getRight() - p1.getRight();
         return Math.sqrt(x * x + y * y);
     }
 }
