@@ -7,9 +7,11 @@ import java.util.stream.IntStream;
 
 public class CalculationStrategyDemo {
     public static void main(String[] args) {
+
         List<Integer> numbers = IntStream
                 .generate(() -> (int) (Math.random() * 100))
                 .limit(10)
+                .peek(System.out::println)
                 .boxed()
                 .collect(Collectors.toList());
 
