@@ -2,3 +2,6 @@
 .iml
 lib/
 /java11-lambda/out
+# Project exclude paths
+/lambda-patterns/target/
+*.iml
