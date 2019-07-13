@@ -9,6 +9,7 @@ public class DecoratorDemo {
         Function<Integer,Integer> square = a -> a*a;
         print(5, "squared", square);
         print(5, "doubled", a -> a*2);
+        print(5, "squared and doubled", square.andThen(a -> a*2));
         print(new Camera());
         print(new Camera(Color::brighter));
         print(new Camera(Color::brighter, Color::brighter));
