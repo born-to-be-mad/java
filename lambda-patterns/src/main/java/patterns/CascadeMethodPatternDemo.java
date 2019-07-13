@@ -2,7 +2,7 @@ package patterns;
 
 import java.util.function.Consumer;
 
-public class MailerDemo {
+public class CascadeMethodPatternDemo {
     public static void main(String[] args) {
         Mailer.send(mailer ->
                 mailer.from("test@test.com")
