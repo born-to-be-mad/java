@@ -14,6 +14,7 @@ public class MailerDemo {
 }
 
 class Mailer {
+    private Mailer() {}
     Mailer from(String email) {
         System.out.println("with from ..." + email);
         return this;
