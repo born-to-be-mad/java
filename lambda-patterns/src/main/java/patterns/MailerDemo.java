@@ -3,23 +3,30 @@ package patterns;
 public class MailerDemo {
     public static void main(String[] args) {
         Mailer mailer = new Mailer();
-        mailer.from("test@test.com");
-        mailer.send();
+        mailer.from("test@test.com")
+                .to("admin@test.com")
+                .subject("bad example")
+                .body("do not send such ")
+                .send();
     }
 }
 
 class Mailer {
-    void from(String email) {
+    Mailer from(String email) {
         System.out.println("with from ..." + email);
+        return this;
     }
-    void to(String email) {
+    Mailer to(String email) {
         System.out.println("with to ..." + email);
+        return this;
     }
-    void subject(String subject) {
+    Mailer subject(String subject) {
         System.out.println("with subject ..." + subject);
+        return this;
     }
-    void body(String body) {
+    Mailer body(String body) {
         System.out.println("with body ..." + body);
+        return this;
     }
     void send() {
         System.out.println("sending...");
