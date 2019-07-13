@@ -2,6 +2,7 @@ package patterns;
 
 import java.awt.*;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 @SuppressWarnings("unchecked")
 public class DecoratorDemo {
@@ -30,10 +31,8 @@ class Camera {
     Function<Color, Color> filter;
 
     Camera(Function<Color, Color>... filters) {
-        filter = base -> base;
-        for (Function<Color, Color> flt : filters) {
-            filter = filter.andThen(flt);
-        }
+        filter= Stream.of(filters)
+                .reduce(Function.identity(), Function::andThen);
     }
 
     Color snap(Color input) {
