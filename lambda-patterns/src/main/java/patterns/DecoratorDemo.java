@@ -27,16 +27,16 @@ public class DecoratorDemo {
 //Camera can have different filter modules
 @SuppressWarnings("unchecked")
 class Camera {
-    Function<Color, Color>[] filters;
+    Function<Color, Color> filter;
+
     Camera(Function<Color, Color>... filters) {
-        this.filters = filters;
+        filter = base -> base;
+        for (Function<Color, Color> flt : filters) {
+            filter = filter.andThen(flt);
+        }
     }
 
     Color snap(Color input) {
-        for (Function<Color, Color> filter : filters) {
-            input= filter.apply(input);
-        }
-
-        return input;
+        return filter.apply(input);
     }
 }
