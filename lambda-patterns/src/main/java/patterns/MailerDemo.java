@@ -1,13 +1,15 @@
 package patterns;
 
+import java.util.function.Consumer;
+
 public class MailerDemo {
     public static void main(String[] args) {
-        Mailer mailer = new Mailer();
-        mailer.from("test@test.com")
-                .to("admin@test.com")
-                .subject("bad example")
-                .body("do not send such ")
-                .send();
+        Mailer.send(mailer ->
+                mailer.from("test@test.com")
+                        .to("admin@test.com")
+                        .subject("bad example")
+                        .body("do not send such ")
+        );
     }
 }
 
@@ -28,7 +30,9 @@ class Mailer {
         System.out.println("with body ..." + body);
         return this;
     }
-    void send() {
+    static void send(Consumer<Mailer> block) {
+        Mailer mailer = new Mailer();
+        block.accept(mailer);
         System.out.println("sending...");
     }
 }
