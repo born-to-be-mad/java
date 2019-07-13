@@ -4,11 +4,11 @@ import java.io.Closeable;
 import java.io.IOException;
 
 public class ExecuteAroundMethodPatternDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Resource resource = new Resource();
         resource.simpleOperation();
         resource.complexOperation();
-        //no "close resources"
+        resource.close();
     }
 }
 
