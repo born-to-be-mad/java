@@ -11,6 +11,8 @@ public class DecoratorDemo {
         print(5, "squared", square);
         print(5, "doubled", a -> a*2);
         print(5, "squared and doubled", square.andThen(a -> a*2));
+
+        print(10, "squared and tripled", square.andThen(a -> a*3));
         print(new Camera());
         print(new Camera(Color::brighter));
         print(new Camera(Color::brighter, Color::brighter));
@@ -28,7 +30,7 @@ public class DecoratorDemo {
 //Camera can have different filter modules
 @SuppressWarnings("unchecked")
 class Camera {
-    Function<Color, Color> filter;
+    private Function<Color, Color> filter;
 
     Camera(Function<Color, Color>... filters) {
         filter= Stream.of(filters)
