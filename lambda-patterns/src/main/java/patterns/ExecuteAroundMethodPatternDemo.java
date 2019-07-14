@@ -1,18 +1,21 @@
 package patterns;
 
-import java.io.Closeable;
 import java.io.IOException;
 
 public class ExecuteAroundMethodPatternDemo {
     public static void main(String[] args) throws IOException {
-        Resource resource = new Resource();
-        resource.simpleOperation();
-        resource.complexOperation();
-        resource.close();
+        //ARM(Automatic Resource Management) = try with resource
+        try (Resource resource = new Resource()) {
+            resource.simpleOperation();
+            resource.complexOperation();
+            resource.close();
+        } catch (IOException exception) {
+            System.out.println(exception);
+        }
     }
 }
 
-class Resource implements Closeable {
+class Resource implements AutoCloseable {
     Resource() {
         System.out.println("Resource created...");
     }
