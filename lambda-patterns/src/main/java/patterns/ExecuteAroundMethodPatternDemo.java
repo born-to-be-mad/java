@@ -3,7 +3,7 @@ package patterns;
 import java.io.IOException;
 
 public class ExecuteAroundMethodPatternDemo {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         //ARM(Automatic Resource Management) = try with resource
         try (Resource resource = new Resource()) {
             resource.simpleOperation();
