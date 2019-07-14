@@ -10,7 +10,9 @@ If there are no branches, the result is:
 ```
 * create a new branch `git checkout -b feature-branch`. <br />This command does two things:
   * it creates a new local metrics branch
-  * it switches the working folder to reference the newly created branch
+  * it switches the working folder to reference the newly created branch<br />
+Check the branches via `git branch`
 ```
-Switched to a new branch 'feature-branch'
+* feature-branch
+ master
 ```
