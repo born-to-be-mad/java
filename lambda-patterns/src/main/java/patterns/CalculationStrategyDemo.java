@@ -28,19 +28,21 @@ public class CalculationStrategyDemo {
         System.out.printf("Sum numbers of even numbers: %d%n", calculateByReduceFunction(numbers, number -> number % 2 != 0));
 
         System.out.println("### BAD FILTERING ###");
-        List<Integer> filteredNumbers = numbers.stream().filter(num -> {
-            if (num % 7 == 0) {
-                return true;
-            }
-            if (num % 11 == 0) {
-                return true;
-            }
-            if (num % 17 == 0) {
-                return true;
-            }
-            // a lot of code here for filtering
-            return false;
-        }).collect(Collectors.toList());
+        List<Integer> filteredNumbers =
+                numbers.stream()
+                        .filter(num -> {
+                            if (num % 7 == 0) {
+                                return true;
+                            }
+                            if (num % 11 == 0) {
+                                return true;
+                            }
+                            if (num % 17 == 0) {
+                                return true;
+                            }
+                            // a lot of code here for filtering
+                            return false;
+                        }).collect(Collectors.toList());
         System.out.printf("Numbers divided by 7, 11 and 17 : %s%n", filteredNumbers);
 
         System.out.println("### GOOD FILTERING(avoid multi line lambda) ###");
