@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class CreatingStreamDemo {
+public class CreatingStreamsDemo {
     public static void main(String[] args) {
         String namesStreamOf = Stream.of("Dima", "Stanislav", "Herman", "Serg", "Clemens","Jurgen")
                 .collect(Collectors.joining(", "));
