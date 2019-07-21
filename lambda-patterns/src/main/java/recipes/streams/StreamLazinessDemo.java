@@ -19,7 +19,7 @@ public class StreamLazinessDemo {
                 firstEvenDoubleDivBy3);
     }
 
-    public static int multipleByTwo(int n) {
+    private static int multipleByTwo(int n) {
         System.out.printf("Inside multByTwo with arg %d%n", n);
         return n * 2;
     }

@@ -40,18 +40,18 @@ public class ReductionOperationsDemo {
         System.out.printf("Sum of numbers from the range [1,10] = %d%n", sum);
 
         int doubledSum = IntStream.rangeClosed(1, 10)
-                .reduce((x, y) -> x + y*2)
+                .reduce((x, y) -> x + y * 2)
                 .orElse(0);
         System.out.printf("Problematic doubled Sum of numbers from the range [1,10] = %d%n", doubledSum);
 
         //when you use the version of reduce with an initial value for the accumulator,
         // the return type is int rather than OptionalInt
         int correctDoubledSum = IntStream.rangeClosed(1, 10)
-                .reduce(0, (x, y) -> x + y*2);
+                .reduce(0, (x, y) -> x + y * 2);
         System.out.printf("Correct doubled Sum of numbers from the range [1,10] = %d%n", correctDoubledSum);
 
         //The identity for max is the minimum integer
-        int max = IntStream.generate(()->(int)(100*Math.random()))
+        int max = IntStream.generate(() -> (int) (100 * Math.random()))
                 .limit(10)
                 .reduce(Integer.MIN_VALUE, Integer::max);
         System.out.println("The max value is " + max);
@@ -89,7 +89,7 @@ public class ReductionOperationsDemo {
                             map1.putAll(map2);
                             return map1;
                         });
-        bookMap.forEach((k,v) -> System.out.println(k + ": " + v));
+        bookMap.forEach((k, v) -> System.out.println(k + ": " + v));
     }
 }
 
