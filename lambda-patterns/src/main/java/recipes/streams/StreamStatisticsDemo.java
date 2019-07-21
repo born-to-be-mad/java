@@ -33,14 +33,14 @@ public class StreamStatisticsDemo {
         System.out.printf("Statistic for %d numbers were calculated:%n min=%f,%n max=%f,%n sum=%f,%n average=%f%n",
                 stats.getCount(), stats.getMin(), stats.getMax(), stats.getSum(), stats.getAverage());
 
-        DoubleSummaryStatistics playersStatisticsViaSummarizin =
+        DoubleSummaryStatistics playersStatisticsViaSummarizing =
                 Stream.of(
                         new Player(7_500, "Dzmitry"),
                         new Player(5_120, "Stanislav"),
                         new Player(3_800, "Ivan"),
                         new Player(4_750, "Petr"))
                         .collect(Collectors.summarizingDouble(Player::getSalary));
-        System.out.println("Player statistics:" + playersStatisticsViaSummarizin);
+        System.out.println("Player statistics(summarizing):" + playersStatisticsViaSummarizing);
 
         DoubleSummaryStatistics playersStatsViaMapping =
                 Stream.of(
@@ -52,7 +52,7 @@ public class StreamStatisticsDemo {
                         .collect(DoubleSummaryStatistics::new,
                                 DoubleSummaryStatistics::accept,
                                 DoubleSummaryStatistics::combine);
-        System.out.println("Player statistics:" + playersStatsViaMapping);
+        System.out.println("Player statistics(mapping):" + playersStatsViaMapping);
 
     }
 }
