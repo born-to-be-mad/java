@@ -9,6 +9,7 @@ class Player {
     private String first;
     private String last;
     private int score;
+    private Club club;
 
     Player(String first, String last, int score) {
         this.first = first;
@@ -26,6 +27,15 @@ class Player {
 
     int getScore() {
         return score;
+    }
+
+    public Club getClub() {
+        return club;
+    }
+
+    public Player setClub(Club club) {
+        this.club = club;
+        return this;
     }
 
     @Override

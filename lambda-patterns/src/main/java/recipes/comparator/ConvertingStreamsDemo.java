@@ -1,8 +1,7 @@
 package recipes.comparator;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,11 +21,14 @@ public class ConvertingStreamsDemo {
 
         System.out.println("### CREATE MAP FROM STREAM ###");
         List<Player> players = Arrays.asList(
-                new Player("Erik", "Cantona", 68),
-                new Player("Roberto", "Carlos", 76),
-                new Player("Alessandro", "Del Piero", 70),
-                new Player("Leonel", "Messi", 103),
-                new Player("Christian", "Ronaldo", 97));
+                new Player("Erik", "Cantona", 68).setClub(Club.MU),
+                new Player("Rayan", "Gicks", 95).setClub(Club.MU),
+                new Player("Paul", "Drogba", 46).setClub(Club.MU),
+                new Player("Roberto", "Carlos", 76).setClub(Club.REAL_MADRID),
+                new Player("Alessandro", "Del Piero", 70).setClub(Club.JUVENTUS),
+                new Player("Leonel", "Messi", 103).setClub(Club.BARCELONA),
+                new Player("Gerard", "Piquet", 55).setClub(Club.BARCELONA),
+                new Player("Christian", "Ronaldo", 97).setClub(Club.JUVENTUS));
         Map<String, Integer> playerMap = players.stream()
                 .collect(Collectors.toMap(Player::getFirst, Player::getScore));
         playerMap.forEach((key, value) ->
@@ -43,5 +45,25 @@ public class ConvertingStreamsDemo {
                 .collect(Collectors.toMap(Player::getLast, Function.identity()));
         playersByLastName.forEach((key, value) ->
                 System.out.printf("%s = %s%n", key, value));
+        System.out.println("######");
+
+        Optional<Player> playerWithMaxScoreBinaryOperator = players.stream()
+                .reduce(BinaryOperator.maxBy(Comparator.comparingInt(Player::getScore)));
+        System.out.println("Player with max score(BinaryOperator.maxBy): " + playerWithMaxScoreBinaryOperator);
+        Optional<Player> playerWithMaxScoreStreamMax = players.stream()
+                .max(Comparator.comparingInt(Player::getScore));
+        System.out.println("Player with max score(Stream.max): " + playerWithMaxScoreStreamMax);
+
+        OptionalInt maxScore = players.stream()
+                .mapToInt(Player::getScore)
+                .max();
+        System.out.println("Max score(BinaryOperator.maxBy): " + maxScore);
+
+        System.out.println("###### Using Collectors.maxBy as a downstream collector ###");
+        Map<Club, Optional<Player>> map = players.stream()
+                .collect(Collectors.groupingBy(
+                        Player::getClub,
+                        Collectors.maxBy(Comparator.comparingInt(Player::getScore))));
+        map.forEach((club, player) -> System.out.println(club + ": " + player));
     }
 }
