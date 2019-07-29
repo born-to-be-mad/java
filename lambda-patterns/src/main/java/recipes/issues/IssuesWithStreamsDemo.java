@@ -1,10 +1,12 @@
 package recipes.issues;
 
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author : Dzmitry Marudau
@@ -15,8 +17,13 @@ public class IssuesWithStreamsDemo {
     public static void main(String[] args) {
         System.out.println("### Stream of random numbers ###");
         createStreamOfRandomNumbers(new Random());
-        System.out.println("### Stream of ecure random numbers ###");
+        System.out.println("### Stream of secure random numbers ###");
         createStreamOfRandomNumbers(new SecureRandom());
+
+        System.out.println("### Fibonachi calculation with cache:");
+        FibonaciProducer fibonaciProducer = new FibonaciProducer();
+        IntStream.rangeClosed(1, 10)
+                .forEach(n -> System.out.printf("%d fibonachi = %s%n", n, fibonaciProducer.get(n)));
     }
 
     private static void createStreamOfRandomNumbers(Random randomGenerator) {
