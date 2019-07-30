@@ -20,7 +20,7 @@ public class ConvertingStreamsDemo {
         System.out.printf("Create an array from stream:%s%n", Arrays.toString(words));
 
         HashSet<String> setOfWords =
-            Arrays.stream(("Better lean piece than fat victory. "
+            Stream.of(("Better lean piece than fat victory. "
                            + "A new broom sweeps clean, but please go fifty-fifty! "
                            + "Like will to like; let bygones be bygones ").split("[\\s.,;!?]+"))
                 .collect(Collectors.toCollection(HashSet::new));
