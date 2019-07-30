@@ -1,7 +1,12 @@
 package recipes.issues;
 
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.*;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -11,7 +16,14 @@ import java.util.stream.IntStream;
  * @since : 2019.07
  **/
 public class IssuesWithStreamsDemo {
-    public static void main(String[] args) {
+
+    private static final Logger LOG = Logger.getLogger(IssuesWithStreamsDemo.class.getName());
+
+    public static void main(String[] args) throws IOException {
+        configureLogger();
+
+        LOG.info("Logger Name: " + LOG.getName());
+
         System.out.println("### Stream of random numbers ###");
         createStreamOfRandomNumbers(new Random());
         System.out.println("### Stream of secure random numbers ###");
@@ -31,6 +43,20 @@ public class IssuesWithStreamsDemo {
         System.out.println("### Count words using the merge method");
         fullWordCounts(phrase)
                 .forEach((word, count) -> System.out.println(word + "=" + count));
+
+        LOG.fine(() -> fullWordCounts(phrase).toString());
+    }
+
+    private static void configureLogger() throws IOException {
+        // Create a file handler object
+        FileHandler handler = new FileHandler("logs.txt");
+        handler.setFormatter(new SimpleFormatter());
+
+        // Add file handler as handler of logs
+        LOG.addHandler(handler);
+
+        // Set Logger level(
+        LOG.setLevel(Level.FINE);
     }
 
     private static void createStreamOfRandomNumbers(Random randomGenerator) {
