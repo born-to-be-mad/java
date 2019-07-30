@@ -27,6 +27,10 @@ public class IssuesWithStreamsDemo {
                 "Be brave. Be strong. Be human. Bob is your uncle. Bob Marley.";
         Map<String, Integer> counts = countWords(phrase, "Be", "is", "Bob");
         counts.forEach((word, count) -> System.out.println(word + "=" + count));
+
+        System.out.println("### Count words using the merge method");
+        fullWordCounts(phrase)
+                .forEach((word, count) -> System.out.println(word + "=" + count));
     }
 
     private static void createStreamOfRandomNumbers(Random randomGenerator) {
@@ -45,9 +49,17 @@ public class IssuesWithStreamsDemo {
     private static Map<String, Integer> countWords(String phrase, String... words) {
         Map<String, Integer> wordCounts = new HashMap<>();
         Arrays.stream(words).forEach(s -> wordCounts.put(s, 0));
-        Arrays.stream(phrase.split("\\s"))
+        Arrays.stream(phrase.split("\\s+"))
                 .forEach(word ->
                         wordCounts.computeIfPresent(word, (key, val) -> val + 1));
+        return wordCounts;
+    }
+
+    private static Map<String, Integer> fullWordCounts(String phrase) {
+        Map<String, Integer> wordCounts = new HashMap<>();
+        String testString = phrase.toLowerCase().replaceAll("\\W", " ");
+        Arrays.stream(testString.split("\\s+"))
+                .forEach(word -> wordCounts.merge(word, 1, Integer::sum));
         return wordCounts;
     }
 }
