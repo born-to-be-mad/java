@@ -72,9 +72,8 @@ class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "salary=" + salary +
-                ", name='" + name + '\'' +
-                '}';
+        return "Player{"
+                + "salary=" + salary
+                + ", name='" + name + '\'' + '}';
     }
 }

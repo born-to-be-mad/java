@@ -1,6 +1,6 @@
 package patterns;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.function.Function;
 import java.util.stream.Stream;
 

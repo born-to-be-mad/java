@@ -1,6 +1,5 @@
 package recipes.issues;
 
-import java.awt.font.TextHitInfo;
 import java.io.IOException;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -24,7 +23,7 @@ public class ClosureCompositionDemo {
         configureLogger();
         System.out.println("### COMPOSITION METHODS IN FUNCTION ###");
         System.out.println("Parse then square the number by composition");
-        Function<Integer, Integer> squareFunction = x -> x *x;
+        Function<Integer, Integer> squareFunction = x -> x * x;
         Function<String, Integer> parseThenSquare = squareFunction.compose(Integer::parseInt);
         System.out.println(parseThenSquare.apply("5"));
 
@@ -40,19 +39,19 @@ public class ClosureCompositionDemo {
 
         System.out.println("### COMPOSITION METHODS IN PREDICATE ###");
         System.out.println("### Numbers divided b 13 and 17");
-        IntPredicate triangular = ClosureCompositionDemo::isDividedBy17;
-        IntPredicate perfect = ClosureCompositionDemo::isDividedBY13;
-        IntPredicate both = triangular.and(perfect);
+        IntPredicate firstPredicate = ClosureCompositionDemo::isDividedBy17;
+        IntPredicate secondPredicate = ClosureCompositionDemo::isDividedBY13;
+        IntPredicate both = firstPredicate.and(secondPredicate);
         IntStream.rangeClosed(1, 1_000)
                 .filter(both)
                 .forEach(System.out::println);
     }
 
-    private static boolean isDividedBy17(int number) {
+    private static boolean isDividedBy17(final int number) {
         return number % 17 == 0;
     }
 
-    private static boolean isDividedBY13(int number) {
+    private static boolean isDividedBY13(final int number) {
         return number % 13 == 0;
     }
 

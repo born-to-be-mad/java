@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class CreatingStreamsDemo {
     public static void main(String[] args) {
-        String namesStreamOf = Stream.of("Dima", "Stanislav", "Herman", "Serg", "Clemens","Jurgen")
+        String namesStreamOf = Stream.of("Dima", "Stanislav", "Herman", "Serg", "Clemens", "Jurgen")
                 .collect(Collectors.joining(", "));
         System.out.printf("Stream.Of: %s%n", namesStreamOf);
 

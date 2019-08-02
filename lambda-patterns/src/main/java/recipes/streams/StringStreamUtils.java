@@ -7,7 +7,7 @@ package recipes.streams;
  **/
 class StringStreamUtils {
 
-    static boolean isPalindromeOldApproach(String inputString) {
+    static boolean isPalindromeOldApproach(final String inputString) {
         StringBuilder sb = new StringBuilder();
         for (char c : inputString.toCharArray()) {
             if (Character.isLetterOrDigit(c)) {
@@ -19,7 +19,7 @@ class StringStreamUtils {
         return forward.equals(backward);
     }
 
-    static boolean isPalindrome(String inputString) {
+    static boolean isPalindrome(final String inputString) {
         String forward = inputString.toLowerCase().codePoints()
                 .filter(Character::isLetterOrDigit)
                 .collect(StringBuilder::new,

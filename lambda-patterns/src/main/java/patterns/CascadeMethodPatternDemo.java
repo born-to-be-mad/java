@@ -13,7 +13,7 @@ public class CascadeMethodPatternDemo {
     }
 }
 
-class Mailer {
+final class Mailer {
     private Mailer() { }
     Mailer from(String email) {
         System.out.println("with from ..." + email);

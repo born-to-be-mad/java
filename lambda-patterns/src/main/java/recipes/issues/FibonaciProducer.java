@@ -13,8 +13,13 @@ public class FibonaciProducer {
 
     private Map<Long, BigInteger> cache = new HashMap<>();
     public BigInteger get(long i) {
-        if (i == 0) return BigInteger.ZERO;
-        if (i == 1) return BigInteger.ONE;
-        return cache.computeIfAbsent(i, n -> get(n - 2).add(get(n - 1)));
+        if (i == 0) {
+            return BigInteger.ZERO;
+        }
+        if (i == 1) {
+            return BigInteger.ONE;
+        }
+        return cache
+                .computeIfAbsent(i, n -> get(n - 2).add(get(n - 1)));
     }
 }
