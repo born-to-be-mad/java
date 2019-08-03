@@ -50,8 +50,6 @@ class Mate {
 
     @Override
     public String toString() {
-        return "Mate{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Mate{name='" + name + "\'}";
     }
 }

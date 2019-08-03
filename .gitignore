@@ -1,8 +1,16 @@
-.idea/
-.iml
-lib/
-# Project exclude paths
-/lambda-patterns/target/
-/java11-lambda/out
-/regexp/target/
+# IntelliJ project files
+.idea
 *.iml
+out
+gen
+
+
+# Project exclude paths
+/*/target/
+/*/out/
+
+#Other
+lib
+logs
+
+

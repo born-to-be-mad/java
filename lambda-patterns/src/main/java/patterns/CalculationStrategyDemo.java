@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 /**
- * THe usage of lambda-functions as lightweight STRATEGY
+ * THe usage of lambda-functions as lightweight STRATEGY,
  * **/
 public class CalculationStrategyDemo {
     public static void main(String[] args) {

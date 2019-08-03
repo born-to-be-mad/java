@@ -1,6 +1,11 @@
 package recipes.comparator;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static java.util.stream.Collectors.*;
 
@@ -58,7 +63,7 @@ public class CreatingImmutableCollectionsDemo {
         return Set.of(elements);
     }
 
-    public static <K,V> Map<K,V> createImmutableMapJava9(K k1, V v1, K k2, V v2) {
+    public static <K, V> Map<K, V> createImmutableMapJava9(K k1, V v1, K k2, V v2) {
         return Map.of(k1, v1, k2, v2);
     }
 

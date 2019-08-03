@@ -20,13 +20,13 @@ public class StringPredicateUtils {
                 .collect(Collectors.joining(", "));
     }
 
-    public String getNamesStartingWith(String prefix, String... names) {
+    public String getNamesStartingWith(final String prefix, final String... names) {
         return Arrays.stream(names)
                 .filter(s -> s.startsWith(prefix))
                 .collect(Collectors.joining(", "));
     }
 
-    public String getNamesSatisfyingCondition(Predicate<String> condition, String... names) {
+    public String getNamesSatisfyingCondition(final Predicate<String> condition, final  String... names) {
         return Arrays.stream(names)
                 .filter(condition)
                 .collect(Collectors.joining(", "));
