@@ -1,12 +1,10 @@
 package recipes.issues;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.*;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -48,15 +46,24 @@ public class IssuesWithStreamsDemo {
     }
 
     private static void configureLogger() throws IOException {
-        // Create a file handler object
-        FileHandler handler = new FileHandler("logs.txt");
-        handler.setFormatter(new SimpleFormatter());
+        // Create a file fileHandler object
+        // check if logs dir exists
+        File logDir = new File("./logs/");
+        if( !(logDir.exists()) ) {
+            logDir.mkdir();
+        }
+        FileHandler fileHandler = new FileHandler("logs/run.log");
+        fileHandler.setFormatter(new SimpleFormatter());
 
-        // Add file handler as handler of logs
-        LOG.addHandler(handler);
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        consoleHandler.setLevel(Level.ALL);
+
+        // Add file fileHandler as fileHandler of logs
+        LOG.addHandler(fileHandler);
+        LOG.addHandler(consoleHandler);
 
         // Set Logger level(
-        LOG.setLevel(Level.FINE);
+        LOG.setLevel(Level.WARNING);
     }
 
     private static void createStreamOfRandomNumbers(Random randomGenerator) {

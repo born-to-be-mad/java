@@ -10,5 +10,7 @@ gen
 /*/out/
 
 #Other
-lib/
+lib
+logs
+
 
