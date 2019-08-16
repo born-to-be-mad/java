@@ -2,10 +2,11 @@ package recipes.time;
 
 import org.junit.jupiter.api.Test;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author : Dzmitry Marudau
@@ -14,41 +15,50 @@ import static org.junit.jupiter.api.Assertions.*;
  **/
 class ConvertDateUtilsTest {
 
+    private static final LocalDate SAMPLE_LOCAL_DATE = LocalDate.of(2009, 2, 14);
+    private static final java.sql.Date SAMPLE_SQL_DATE = new java.sql.Date(1_234_562_400_000L);
+    private static final java.util.Date SAMPLE_UTIL_DATE = new java.util.Date(1_234_562_400_000L);
+    private static final java.util.Date SAMPLE_UTIL_DATE_WITH_TIME = new java.util.Date(1_234_567_895_678L);
+    private static final LocalDateTime SAMPLE_LOCAL_DATE_TIME = LocalDateTime.of(2009, 2, 14, 1, 31, 35, 678_000_000);
+    private static final Timestamp SAMPLE_TIMESTAMP = new Timestamp(1_234_567_895_678L);
+
     private ConvertDateUtils utils = new ConvertDateUtils();
 
     @Test
     void convertFromSqlDateToLocalDate() {
-        assertEquals(LocalDate.of(2009, 2, 14),
-                utils.convertFromSqlDateToLocalDate(new java.sql.Date(1234567890000L)));
+        assertEquals(SAMPLE_LOCAL_DATE, utils.convertFromSqlDateToLocalDate(SAMPLE_SQL_DATE));
     }
 
     @Test
     void convertToSqlDateFromLocalDate() {
-        Date expected = new Date(1234567890000L);
-        expected.setTime(0);
-        Date actual = utils.convertToSqlDateFromLocalDate(LocalDate.of(2009, 2, 14));
-        actual.setTime(0);
-        assertEquals(expected, actual);
+        assertEquals(SAMPLE_SQL_DATE, utils.convertToSqlDateFromLocalDate(SAMPLE_LOCAL_DATE));
     }
 
     @Test
     void convertUtilDateToLocalDate() {
-    }
-
-    @Test
-    void convertFromTimestampToLocalDateTime() {
+        assertEquals(SAMPLE_LOCAL_DATE, utils.convertUtilDateToLocalDate(SAMPLE_SQL_DATE));
+        assertEquals(SAMPLE_LOCAL_DATE, utils.convertUtilDateToLocalDate(SAMPLE_UTIL_DATE));
     }
 
     @Test
     void convertToLocalDateFromUtilDateJava9() {
+        assertEquals(SAMPLE_LOCAL_DATE, utils.convertToLocalDateFromUtilDateJava9(SAMPLE_UTIL_DATE));
+    }
+
+    @Test
+    void convertFromTimestampToLocalDateTime() {
+        assertEquals(SAMPLE_LOCAL_DATE_TIME, utils.convertFromTimestampToLocalDateTime(SAMPLE_TIMESTAMP));
     }
 
     @Test
     void convertFromUtilDateToLocalDateTimeUsingString() {
+        assertEquals(SAMPLE_LOCAL_DATE_TIME,
+                utils.convertFromUtilDateToLocalDateTimeUsingString(SAMPLE_UTIL_DATE_WITH_TIME));
     }
 
     @Test
     void convertToTimestampFromLocalDateTime() {
+        assertEquals(SAMPLE_TIMESTAMP, utils.convertToTimestampFromLocalDateTime(SAMPLE_LOCAL_DATE_TIME));
     }
 
     @Test

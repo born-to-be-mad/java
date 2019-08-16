@@ -39,7 +39,7 @@ public class ConvertDateUtils {
     }
 
     public LocalDateTime convertFromUtilDateToLocalDateTimeUsingString(Date date) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         return LocalDateTime.parse(df.format(date),
                 DateTimeFormatter.ISO_LOCAL_DATE_TIME);
     }
