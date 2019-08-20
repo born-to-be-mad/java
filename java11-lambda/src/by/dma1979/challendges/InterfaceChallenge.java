@@ -1,4 +1,4 @@
-package by.dma1979;
+package by.dma1979.challendges;
 
 import java.util.function.Function;
 
