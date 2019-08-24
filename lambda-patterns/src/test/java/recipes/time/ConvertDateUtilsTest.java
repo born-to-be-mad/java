@@ -29,6 +29,8 @@ class ConvertDateUtilsTest {
         assertEquals(SAMPLE_LOCAL_DATE, utils.convertFromSqlDateToLocalDate(SAMPLE_SQL_DATE));
     }
 
+
+
     @Test
     void convertToSqlDateFromLocalDate() {
         assertEquals(SAMPLE_SQL_DATE, utils.convertToSqlDateFromLocalDate(SAMPLE_LOCAL_DATE));
