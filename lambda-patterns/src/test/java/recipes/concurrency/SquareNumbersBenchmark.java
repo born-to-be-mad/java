@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @State(Scope.Thread)
 @Fork(value = 2, jvmArgs = {"-Xms4G", "-Xmx4G"})
-public class DoublingDemo {
+public class SquareNumbersBenchmark {
     public int doubleIt(int n) {
         try {
             Thread.sleep(100);
