@@ -15,22 +15,24 @@ public class ForJoinPoolDemo {
     public static void main(String[] args) {
         specifyPoolParameters();
         createOwnJoinPool();
-        long total = LongStream.rangeClosed(1, 3_000_000)
-                .parallel()
-                .sum();
     }
 
     static void specifyPoolParameters() {
         System.out.println("Available processors: " + Runtime.getRuntime().availableProcessors());
 
-/*        System.setProperty(
-                "java.util.concurrent.ForkJoinPool.common.parallelism", "20");*/
+        System.setProperty(
+                "java.util.concurrent.ForkJoinPool.common.parallelism", "20");
         int poolSize = ForkJoinPool.commonPool().getPoolSize();
         System.out.println("Pool size: " + poolSize);
+
+        int parallelism = ForkJoinPool.commonPool().getParallelism();
+        System.out.println("Parallelism: " + parallelism);
     }
 
     static void createOwnJoinPool() {
         ForkJoinPool pool = new ForkJoinPool(15);
+        int parallelism = pool.getParallelism();
+        System.out.println("Custom parallelism after ForkJoinPool: " + parallelism);
         ForkJoinTask<Long> task = pool.submit(
                 () -> LongStream.rangeClosed(1, 3_000_000)
                         .parallel()
