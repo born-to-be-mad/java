@@ -3,6 +3,8 @@ package recipes.concurrency;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 /**
@@ -13,6 +15,16 @@ import java.util.logging.Logger;
 public class CompletableFutureDemo {
     private Map<Integer, Product> cache = new HashMap<>();
     private Logger logger = Logger.getLogger(this.getClass().getName());
+
+    public static void main(String[] args) {
+        ExecutorService service = Executors.newFixedThreadPool(4);
+        CompletableFuture.supplyAsync(CompletableFutureDemo::sleepThenReturnString, service)
+                .thenApply(Integer::parseInt)
+                .thenApply(x -> x * x)
+                .thenAccept(System.out::println);
+                //.join();
+        System.out.println("Calculating...");
+    }
 
     public CompletableFuture<Product> getProduct(int id) {
         try {
@@ -71,5 +83,14 @@ public class CompletableFutureDemo {
         } catch (InterruptedException ignored) {
         }
         return new Product(id, "name");
+    }
+
+    private static String sleepThenReturnString() {
+        long randomNumber = 5 + (long) (Math.random() * 10);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ignored) {
+        }
+        return String.valueOf(randomNumber);
     }
 }
