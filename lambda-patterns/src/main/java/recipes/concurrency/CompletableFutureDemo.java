@@ -2,9 +2,7 @@ package recipes.concurrency;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 /**
@@ -21,8 +19,9 @@ public class CompletableFutureDemo {
         CompletableFuture.supplyAsync(CompletableFutureDemo::sleepThenReturnString, service)
                 .thenApply(Integer::parseInt)
                 .thenApply(x -> x * x)
-                .thenAccept(System.out::println);
-                //.join();
+                .thenAccept(System.out::println)
+                .join();
+        ForkJoinPool.commonPool().awaitQuiescence(2, TimeUnit.SECONDS);
         System.out.println("Calculating...");
     }
 

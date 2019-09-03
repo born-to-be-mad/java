@@ -14,13 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
  **/
 class CompletableFutureDemoTest {
 
-    CompletableFutureDemo demo =new CompletableFutureDemo();
+    CompletableFutureDemo demo = new CompletableFutureDemo();
 
     @Test
     void assertThrowsException() {
         String str = null;
         assertThrows(ExecutionException.class, () -> {
-            demo.getProduct(3).get();;
+            demo.getProduct(3).get();
+            ;
         });
     }
 
@@ -54,5 +55,24 @@ class CompletableFutureDemoTest {
                         .thenCombine(CompletableFuture.supplyAsync(() -> y),
                                 (n1, n2) -> n1 + n2);
         assertEquals(55, (int) completableFuture.get());
+    }
+
+    @Test
+    public void handleWithException() throws Exception {
+        String num = "abc";
+        CompletableFuture<Integer> value = getIntegerCompletableFuture(num);
+        assertTrue(value.get() == 0);
+    }
+
+    @Test
+    public void handleWithoutException() throws Exception {
+        String num = "42";
+        CompletableFuture<Integer> value = getIntegerCompletableFuture(num);
+        assertTrue(value.get() == 42);
+    }
+
+    private CompletableFuture<Integer> getIntegerCompletableFuture(String num) {
+        return CompletableFuture.supplyAsync(() -> Integer.parseInt(num))
+                .handle((val, exc) -> val != null ? val : 0);
     }
 }
