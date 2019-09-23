@@ -10,7 +10,7 @@ import java.util.List;
  * @created at : 00:06
  * @since : 2019.09
  **/
-public class DemonstrateImmutabilityTests {
+public class DemonstrateListImmutabilityTest {
     @Test
     public void showImmutabilityAdd() {
         Assertions.assertThrows(UnsupportedOperationException.class, () -> {
