@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @created at : 00:16
  * @since : 2019.09
  **/
-public class DemonstrateSetImmutabilityTest {
+public class DemonstrateSetAndMapImmutabilityTest {
     @Test
     public void showDuplicatesAdd() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
