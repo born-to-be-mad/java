@@ -30,7 +30,7 @@ import by.model._CLASS_NAME_;
 /*
 Created by DMA
 */
-class CLASS_NAMEDTO {}
+class _CLASS_NAME_DTO {}
 """;
 
 System.out.printf("Template:%n%s%n", template);
