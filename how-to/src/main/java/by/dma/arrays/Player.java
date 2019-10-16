@@ -40,11 +40,11 @@ class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "club=" + club +
-                ", first='" + first + '\'' +
-                ", last='" + last + '\'' +
-                ", score=" + score +
-                '}';
+        return "Player{"
+                + "club=" + club
+                + ", first='" + first + '\''
+                + ", last='" + last + '\''
+                + ", score=" + score
+                + '}';
     }
 }

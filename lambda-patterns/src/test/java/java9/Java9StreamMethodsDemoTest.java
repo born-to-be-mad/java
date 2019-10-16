@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * New Stream methods sinse Java 9: ofNullable , iterate , takeWhile , and dropWhile .
+ * New Stream methods since Java 9: ofNullable , iterate , takeWhile , and dropWhile .
  *
  * @author : Dzmitry Marudau
  * @created at : 00:43
