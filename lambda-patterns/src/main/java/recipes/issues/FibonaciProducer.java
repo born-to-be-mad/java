@@ -12,6 +12,7 @@ import java.util.Map;
 public class FibonaciProducer {
 
     private Map<Long, BigInteger> cache = new HashMap<>();
+
     public BigInteger get(long i) {
         if (i == 0) {
             return BigInteger.ZERO;

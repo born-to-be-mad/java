@@ -2,7 +2,11 @@ package recipes.concurrency;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 /**
@@ -71,6 +75,16 @@ public class CompletableFutureDemo {
         return cache.get(id);
     }
 
+    private static String sleepThenReturnString() {
+        long randomNumber = 5 + (long) (Math.random() * 10);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ignored) {
+            logg
+        }
+        return String.valueOf(randomNumber);
+    }
+
     private Product getRemote(int id) {
         try {
             //Simulate a delay followed by a retrieval
@@ -80,16 +94,8 @@ public class CompletableFutureDemo {
                 throw new RuntimeException("Bad request");
             }
         } catch (InterruptedException ignored) {
+            logger.warning("InterruptedException exception thrown");
         }
         return new Product(id, "name");
-    }
-
-    private static String sleepThenReturnString() {
-        long randomNumber = 5 + (long) (Math.random() * 10);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ignored) {
-        }
-        return String.valueOf(randomNumber);
     }
 }
