@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  **/
 public class CompletableFutureDemo {
     private Map<Integer, Product> cache = new HashMap<>();
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    private static Logger logger = Logger.getLogger(CompletableFutureDemo.class.getName());
 
     public static void main(String[] args) {
         ExecutorService service = Executors.newFixedThreadPool(4);
@@ -80,7 +80,7 @@ public class CompletableFutureDemo {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ignored) {
-            logg
+            logger.warning("InterruptedException:");
         }
         return String.valueOf(randomNumber);
     }
