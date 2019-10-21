@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
 /**
- * THe usage of lambda-functions as lightweight STRATEGY,
- * **/
+ * THe usage of lambda-functions as lightweight STRATEGY.
+ **/
 public class CalculationStrategyDemo {
     public static void main(String[] args) {
 
@@ -20,12 +21,14 @@ public class CalculationStrategyDemo {
         System.out.println("### SUM FUNCTION ###");
         System.out.printf("Total: %d%n", calculateBySumFunction(numbers, number -> true));
         System.out.printf("Sum of odd numbers: %d%n", calculateBySumFunction(numbers, number -> number % 2 == 0));
-        System.out.printf("Sum numbers of even numbers: %d%n", calculateBySumFunction(numbers, number -> number % 2 != 0));
+        System.out.printf("Sum numbers of even numbers: %d%n",
+                calculateBySumFunction(numbers, number -> number % 2 != 0));
 
         System.out.println("### REDUCE FUNCTION ###");
         System.out.printf("Total: %d%n", calculateByReduceFunction(numbers, number -> true));
         System.out.printf("Sum of odd numbers: %d%n", calculateByReduceFunction(numbers, number -> number % 2 == 0));
-        System.out.printf("Sum numbers of even numbers: %d%n", calculateByReduceFunction(numbers, number -> number % 2 != 0));
+        System.out.printf("Sum numbers of even numbers: %d%n",
+                calculateByReduceFunction(numbers, number -> number % 2 != 0));
 
         System.out.println("### BAD FILTERING ###");
         List<Integer> filteredNumbers =

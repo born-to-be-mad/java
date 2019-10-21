@@ -45,7 +45,7 @@ public class FutureInterfaceDemo {
 
     }
 
-    static private void getIfNotCancelled(Future<String> future) {
+    private static void getIfNotCancelled(Future<String> future) {
         try {
             if (future.isCancelled()) {
                 System.out.println("Future cancelled");

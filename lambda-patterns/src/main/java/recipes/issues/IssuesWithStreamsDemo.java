@@ -3,8 +3,17 @@ package recipes.issues;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.*;
-import java.util.logging.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -33,8 +42,8 @@ public class IssuesWithStreamsDemo {
                 .forEach(n -> System.out.printf("%d fibonachi = %s%n", n, fibonaciProducer.get(n)));
 
         System.out.println("### Count words in the phrase ###");
-        String phrase = "To be or not to be? That is the question." +
-                "Be brave. Be strong. Be human. Bob is your uncle. Bob Marley.";
+        String phrase = "To be or not to be? That is the question."
+                + "Be brave. Be strong. Be human. Bob is your uncle. Bob Marley.";
         Map<String, Integer> counts = countWords(phrase, "Be", "is", "Bob");
         counts.forEach((word, count) -> System.out.println(word + "=" + count));
 
@@ -49,7 +58,7 @@ public class IssuesWithStreamsDemo {
         // Create a file fileHandler object
         // check if logs dir exists
         File logDir = new File("./logs/");
-        if( !(logDir.exists()) ) {
+        if (!(logDir.exists())) {
             logDir.mkdir();
         }
         FileHandler fileHandler = new FileHandler("logs/run.log");

@@ -1,6 +1,7 @@
 package recipes.comparator;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.util.Comparator.comparingInt;
 import static java.util.Comparator.naturalOrder;

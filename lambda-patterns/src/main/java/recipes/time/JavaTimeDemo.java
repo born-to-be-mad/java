@@ -1,6 +1,10 @@
 package recipes.time;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -23,10 +27,10 @@ public class JavaTimeDemo {
         System.out.println(london);
 
         System.out.println("### Some methods in the Month enum ###");
-        System.out.println("Days in Feb in a leap year: " +
-                Month.FEBRUARY.length(true));
-        System.out.println("Day of year for first day of Aug (leap year): " +
-                Month.AUGUST.firstDayOfYear(true));
+        System.out.println("Days in Feb in a leap year: "
+                + Month.FEBRUARY.length(true));
+        System.out.println("Day of year for first day of Aug (leap year): "
+                + Month.AUGUST.firstDayOfYear(true));
         System.out.println("Month.of(1): " + Month.of(1));
         System.out.println("Adding two months: " + Month.JANUARY.plus(2));
         System.out.println("Subtracting a month: " + Month.MARCH.minus(1));
