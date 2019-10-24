@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  */
 public class FunctionChallenge {
 
-    public static void main(String ... doYourBest) {
+    public static void main(String... doYourBest) {
         String starWars = "Luke DarthVader ObiWan QuiGonJinn Palpatine";
 
         Function<String, Stream<String>> lineSplitter =

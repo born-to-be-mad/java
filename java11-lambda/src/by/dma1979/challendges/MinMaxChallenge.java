@@ -17,7 +17,8 @@ public class MinMaxChallenge {
         IntStream intStream2 = intStream;
 
         OptionalInt optIntMin = intStream.min();
-        //once the Stream is used at the intStream.min() invocation, the same Stream can't be used again to the intStream2.max() method invocation.
+        //Once the Stream is used at the intStream.min() invocation,
+        // the same Stream can't be used again to the intStream2.max() method invocation.
         OptionalInt optIntMax = intStream2.max();
 
         int sum = optIntMax.orElse(5) + optIntMin.orElse(5);

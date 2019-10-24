@@ -6,7 +6,7 @@ package by.dma1979.challendges;
  */
 public class ToString {
 
-    static int number = 10;
+    private static int number = 10;
 
     public static void main(String... doYourBest) {
         new ToString();
