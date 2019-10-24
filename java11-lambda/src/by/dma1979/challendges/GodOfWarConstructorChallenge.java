@@ -6,7 +6,7 @@ package by.dma1979.challendges;
  */
 public class GodOfWarConstructorChallenge {
 
-    String name;
+    private String name;
 
     GodOfWarConstructorChallenge(String name) {
         this.name = name;

@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 /**
  * @author dzmitry.marudau
  * @since 2019.9
+ *
  * ^[A-Z0-9.-?]*[@|$][&]?[a-z0-9]+.[a-z]{2,6}$";
  * ^ means that we will be verifying the beginning of a text.
  * A-Z means letters from A to Z

@@ -2,17 +2,11 @@ package by.dma1979;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.Spliterators;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toSet;
 
 /**
  * @author dzmitry.marudau
@@ -26,7 +20,8 @@ public class TestRegExp {
 
         Map<String, String> styles = new HashMap<>();
         // (.+?): captures the key
-        // (?:,\\W|$): captures a comma followed by a space (these two symbols together are our actual separator) OR the end of the string
+        // (?:,\\W|$): captures a comma followed by a space (these two symbols together are our actual separator)
+        //             OR the end of the string
 
         //final String input = "a-b:123; cc-dd:100%; eee-fff:test";
         final String input = "abc:456;def:;eee:145;:";
@@ -75,8 +70,7 @@ public class TestRegExp {
     }
 }
 
-class MatcherSpliterator extends Spliterators.AbstractSpliterator<String[]>
-{
+class MatcherSpliterator extends Spliterators.AbstractSpliterator<String[]> {
     private final Matcher matcher;
 
     public MatcherSpliterator(Matcher matcher) {

@@ -25,7 +25,7 @@ public class ReflectionChallenge2 {
     @Table(name = "jedi")
     static class Jedi {
         @Column(name = "attack_type")
-        String attackType;
+        private String attackType;
 
         public String getAttackType() {
             return attackType;

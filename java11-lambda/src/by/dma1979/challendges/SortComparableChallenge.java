@@ -20,10 +20,10 @@ public class SortComparableChallenge {
         set.add(new Simpson("Bart"));
         set.add(new Simpson("Maggie"));
 
-        trySort1(set);//Marge Maggie Lisa Homer Bart
-        trySort2(set);//Bart Homer Lisa Maggie Marge
-        trySort3(set);//Marge Maggie Lisa Homer Bart
-        trySort4(set);//Bart Homer Lisa Maggie Marge
+        trySort1(set); //Marge Maggie Lisa Homer Bart
+        trySort2(set); //Bart Homer Lisa Maggie Marge
+        trySort3(set); //Marge Maggie Lisa Homer Bart
+        trySort4(set); //Bart Homer Lisa Maggie Marge
     }
 
     private static void trySort1(Set<Simpson> set) {
@@ -62,7 +62,7 @@ public class SortComparableChallenge {
     }
 
     static class Simpson implements Comparable<Simpson> {
-        String name;
+        private String name;
 
         Simpson(String name) {
             this.name = name;

@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
  * @since 2019.4
  */
 public class ExceptionChallenge {
-    static String s = "-";
+    private static String s = "-";
 
     public static void main(String... doYouBest) {
         try {

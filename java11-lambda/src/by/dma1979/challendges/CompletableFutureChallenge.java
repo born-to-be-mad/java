@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @since 2019.4
  */
 public class CompletableFutureChallenge {
-    static ExecutorService executor = Executors.newCachedThreadPool();
+    private static ExecutorService executor = Executors.newCachedThreadPool();
 
     public static void main(String... oracleCodeOneAdventure) {
         CompletableFuture<List<String>> adventureStart = new CompletableFuture<>();
