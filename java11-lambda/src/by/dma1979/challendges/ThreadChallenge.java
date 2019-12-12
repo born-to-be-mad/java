@@ -13,14 +13,14 @@ public class ThreadChallenge {
 
         //which choice(s) always display "Yamaha YZF"
 
-        /*
-        Motorcycle yamaha = new Motorcycle("Yamaha");
+        // ### Choice 1 ###
+        /*Motorcycle yamaha = new Motorcycle("Yamaha");
         yamaha.start();
         yamaha.start();
-        yamaha.start();
-        */
+        yamaha.start();*/
 
-        Motorcycle harley = new Motorcycle("Harley");
+        // ### Choice 2 ###
+/*        Motorcycle harley = new Motorcycle("Harley");
         harley.start();
         harley.join();
 
@@ -30,11 +30,12 @@ public class ThreadChallenge {
         bmw.start();
         bmw.join();
 
-        Motorcycle yamaha = new Motorcycle("Yamaha");
+        Motorcycle yamaha = new Motorcycle("Yamaha YZ");
         yamaha.setPriority(Thread.MIN_PRIORITY);
         yamaha.start();
-        yamaha.join();
+        yamaha.join();*/
 
+        // ### Choice 3 ###
 /*        new Motorcycle("Harley").start();
 
         Motorcycle bmw = new Motorcycle("BMW");
@@ -48,7 +49,6 @@ public class ThreadChallenge {
         yamaha.start();
         yamaha.join();*/
 
-/*
         Motorcycle harley = new Motorcycle("Harley");
         harley.start();
         harley.setDaemon(false);
@@ -63,7 +63,6 @@ public class ThreadChallenge {
         yamaha.setPriority(Thread.MIN_PRIORITY);
         yamaha.start();
         yamaha.setDaemon(false);
-*/
 
 
         System.out.println(thread.wolverineAdrenaline);
