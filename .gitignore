@@ -1,31 +1,47 @@
-# IntelliJ project files
+# IDE files
+.DS_Store
+.vscode
 .idea
-*.iml
-out
-gen
+.iws
+.iml
+.ipr
+.history
 
-
-# Compiled class file
-*.class
+# dependencies
+node_modules
+start-here-guidelines
+start
 
 # Log file
-*.log
+.log
 
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
+# Package Files
+.zip
+.gzip
+.tar.gz
+.rar
 
-# Project exclude paths
-/*/target/
-/*/out/
+# Compiled class file
+.class
 
-#Other
+#Other folders
 lib
 logs
+target
+build
+out
+gen
+.gradle
+.mvn
 
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-
+### Liquid base ###
+*.db
