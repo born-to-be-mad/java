@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>by.dma</groupId>
+  <artifactId>playing-with-java</artifactId>
+  <version>2020.1.0</version>
+  <packaging>pom</packaging>
+  <name>Playing with Java via different small projects</name>
+
+  <properties>
+    <!-- https://maven.apache.org/general.html#encoding-warning -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+    <!-- Projects and versioning -->
+    <commons.version>2020.1.0</commons.version>
+    <algorithms.version>2020.1.0</algorithms.version>
+    <regexp.version>2020.1.0</regexp.version>
+    <java.quizzes.version>2020.1.0</java.quizzes.version>
+
+    <!-- External dependencies and versioning -->
+    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+    <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+    <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
+    <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+    <maven-failsafe-plugin.version>3.0.0-M4</maven-failsafe-plugin.version>
+
+    <junit.version>5.4.2</junit.version>
+    <mockito.version>2.7.18</mockito.version>
+  </properties>
+
+  <modules>
+    <module>commons</module>
+    <module>algorithms</module>
+    <module>regexp</module>
+    <module>java-quizzes</module>
+  </modules>
+
+  <profiles>
+  </profiles>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- other modules -->
+      <dependency>
+        <groupId>by.dma</groupId>
+        <artifactId>commons</artifactId>
+        <version>${commons.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>by.dma</groupId>
+        <artifactId>algorithms</artifactId>
+        <version>${algorithms.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>by.dma</groupId>
+        <artifactId>regexp</artifactId>
+        <version>${regexp.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>by.dma</groupId>
+        <artifactId>java-quizzes</artifactId>
+        <version>${java.quizzes.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- unit test -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>${maven-clean-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${maven-failsafe-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
