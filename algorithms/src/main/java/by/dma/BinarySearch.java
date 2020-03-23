@@ -17,7 +17,7 @@ public class BinarySearch {
      * @param sortedArray the sorted array of integers
      * @param item        the integer to search for
      */
-    private static Integer binarySearch(int[] sortedArray, int item) {
+    Integer binarySearch(int[] sortedArray, int item) {
         int low = 0;
         int high = sortedArray.length - 1;
 
@@ -39,10 +39,10 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] myList = {1, 3, 6, 9, 15};
-
+        BinarySearch search = new BinarySearch();
         System.out.printf("Searching for %d in %s: result position %s%n", 3, Arrays.toString(myList),
-                          binarySearch(myList, 3));
+                          search.binarySearch(myList, 3));
         System.out.printf("Searching for %d in %s: result position %s%n", 5, Arrays.toString(myList),
-                          binarySearch(myList, 5));
+                          search.binarySearch(myList, 5));
     }
 }
