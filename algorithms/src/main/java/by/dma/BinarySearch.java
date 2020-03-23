@@ -1,7 +1,10 @@
+package by.dma;
+
 import java.util.Arrays;
 
 /**
- * With binary search, you guess the middle number and eliminate half the remaining numbers every time
+ * With binary search, you guess the middle number and eliminate half the remaining numbers every time.
+ * {@impNote Complexity: O(log2 N)}.
  *
  * @author dzmitry.marudau
  * @since 2020.1
