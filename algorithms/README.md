@@ -29,3 +29,6 @@ Operation | Arrays | Lists
 *DELETION* | `O(N)` | **O(1)**
 
 Where: O(N) -linear time, O(1) - constant time.
+ 
+* Arrays allow fast reads
+* Linked lists allow fast inserts and deletes
