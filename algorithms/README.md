@@ -1,5 +1,14 @@
 # Algorithms written in Java
 
+## What is recursion?
+_Recursion_ is the process in which when a function calls itself directly or indirectly. This corresponding function is called _recursion function_.
+
+Every recursive function has two parts: 
+* the base case
+* the recursive case.
+
+All function calls go onto the _call stack_. It can get very large and can take up a lot of memory.
+
 ## What is Big O notation?
 
 ### The definition of Big O notation
