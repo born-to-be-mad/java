@@ -22,7 +22,6 @@ public class SelectionSort {
         return newArray;
     }
 
-
     private int findSmallest(int[] array) {
         int smallestNumber = array[0];
         int smallestIndex = 0;
