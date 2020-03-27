@@ -41,3 +41,9 @@ Where: O(N) -linear time, O(1) - constant time.
  
 * Arrays allow fast reads
 * Linked lists allow fast inserts and deletes
+
+
+## How does Divide&Conquer(D&C) approach work?
+1. Figure out a simple case as the base case.
+2. Figure out how to reduce your problem and get to the base case.
+ 

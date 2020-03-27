@@ -7,7 +7,7 @@ import java.util.Arrays;
  * * {@impNote Complexity: O( N × N)}.
  *
  * @author dzmitry.marudau
- * @since 2020.2
+ * @since 2020.1
  */
 public class SelectionSort {
 
