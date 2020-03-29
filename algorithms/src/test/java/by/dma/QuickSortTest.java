@@ -1,5 +1,7 @@
 package by.dma;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -42,5 +44,12 @@ class QuickSortTest {
 
         Assertions.assertArrayEquals(new int[] {1, 5, 6, 7, 10},
                                      sorter.sort(new int[] {7, 5, 1, 10, 6}));
+    }
+
+    @Test
+    void sortList() {
+        QuickSort sorter = new QuickSort();
+        Assertions.assertEquals(Arrays.asList(1, 5, 6, 7, 10),
+                                sorter.sort(Arrays.asList(10, 6, 1, 7, 5)));
     }
 }
