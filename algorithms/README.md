@@ -31,7 +31,6 @@ It tells you how fast the algorithm grows(how fast an algorithm is).
 * Doubling the value of just the first element in an array.
   * O(1)
 
-
 ### Main points
 * Algorithm speed isn’t measured in seconds.
 * Algorithm times are measured in terms of growth of an algorithm.

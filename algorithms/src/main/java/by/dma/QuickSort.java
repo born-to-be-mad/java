@@ -16,18 +16,47 @@ public class QuickSort {
         QuickSort app = new QuickSort();
         int[] sortedArray = app.sort(originalArray);
         System.out.printf("%s was sorted to: %s%n", Arrays.toString(originalArray),
-                Arrays.toString(sortedArray));
+                          Arrays.toString(sortedArray));
     }
 
-    private int[] sort(int[] array) {
-        //TODO
-        int[] copyArray = Arrays.copyOf(array, array.length);
-        //1. Pick a pivot.
-        //2. Partition the array into two sub-arrays: elements less than the pivot
-        //and elements greater than the pivot.
-        //3. Call quicksort recursively on the two sub-arrays.
+    public int[] sort(int[] array) {
+        if (array != null && array.length > 0) {
+            quickSort(array, 0, array.length - 1);
+        }
+        return array;
+    }
 
-        return copyArray;
+    private void quickSort(int[] array, int start, int end) {
+        // Pick a pivot.
+        int partition = partition(array, start, end);
+
+        // Move smaller elements to the left and move bigger elements to the right of the pivot
+        // Recursively sort left part and right part
+        if (partition - 1 > start) {
+            quickSort(array, start, partition - 1);
+        }
+        if (partition + 1 < end) {
+            quickSort(array, partition + 1, end);
+        }
+    }
+
+    private int partition(int[] array, int from, int to) {
+        int pivot = array[to];
+
+        for (int index = from; index < to; index++) {
+            if (array[index] < pivot) {
+                int temp = array[from];
+                array[from] = array[index];
+                array[index] = temp;
+                from++;
+            }
+        }
+
+        int temp = array[from];
+        array[from] = pivot;
+        array[to] = temp;
+
+        return from;
     }
 
 }
