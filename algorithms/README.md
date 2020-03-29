@@ -23,6 +23,15 @@ It tells you how fast the algorithm grows(how fast an algorithm is).
 * O(N*N). Example: A slow sorting algorithm, like `selection sort`.
 * O(N!). Example: A really slow algorithm, like the `traveling salesperson problem`.
 
+#### Examples of Big O estimations:
+* Printing the value of each element in an array.
+  * O(n)
+* Doubling the value of each element in an array.
+  * O(n)
+* Doubling the value of just the first element in an array.
+  * O(1)
+
+
 ### Main points
 * Algorithm speed isn’t measured in seconds.
 * Algorithm times are measured in terms of growth of an algorithm.
