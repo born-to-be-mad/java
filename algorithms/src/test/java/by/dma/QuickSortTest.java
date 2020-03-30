@@ -51,5 +51,8 @@ class QuickSortTest {
         QuickSort sorter = new QuickSort();
         Assertions.assertEquals(Arrays.asList(1, 5, 6, 7, 10),
                                 sorter.sort(Arrays.asList(10, 6, 1, 7, 5)));
+
+        Assertions.assertEquals(Arrays.asList(0, 1, 2, 5, 6, 7, 10),
+                sorter.sort(Arrays.asList(10, 2, 6, 1, 7, 0, 5)));
     }
 }
