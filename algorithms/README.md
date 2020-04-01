@@ -52,6 +52,9 @@ Where: O(N) -linear time, O(1) - constant time.
 
 
 ## How does Divide&Conquer(D&C) approach work?
+D&C works by breaking a problem down into smaller and smaller
+pieces. 
+_Steps_:
 1. Figure out a simple case as the base case.
 2. Figure out how to reduce your problem and get to the base case.
  

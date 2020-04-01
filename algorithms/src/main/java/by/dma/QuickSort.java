@@ -1,5 +1,6 @@
 package by.dma;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -8,7 +9,7 @@ import java.util.stream.Stream;
 
 /**
  * Quick sort is a fast sorting algorithm. It uses D&C technique.
- * {@impNote Complexity: average O(N log N), the worst O( N × N)}.
+ * {@impNote Complexity: average/best O(N) * O(log2 B) = O(N log2 N), the worst O(N × N)}.
  *
  * @author : Dzmitry Marudau
  * @created at : 00:39
@@ -63,23 +64,26 @@ public class QuickSort {
         return from;
     }
 
-    public List<Integer> sort(List<Integer> list) {
-        if (list.size() < 2) {
+    public List<Integer> sort(List<Integer> originalList) {
+        if (originalList.size() < 2) {
             // base case, arrays with 0 or 1 element are already "sorted"
-            return list;
+            return originalList;
         } else {
             // recursive case, pickup pivot
-            Integer pivot = list.get(0);
+            //Integer pivot = list.get(0);
+            List<Integer> list = new ArrayList<>(originalList);
+            int middleIndex = list.size() >> 1;
+            Integer pivot = list.remove(middleIndex);
 
             // sub-array of all the elements less than the pivot
             List<Integer> less = list.stream()
-                                     .skip(1)
+                                     //.skip(1)
                                      .filter(element -> element <= pivot)
                                      .collect(Collectors.toList());
 
             // sub-array of all the elements greater than the pivot
             List<Integer> greater = list.stream()
-                                        .skip(1)
+                                        //.skip(1)
                                         .filter(element -> element > pivot)
                                         .collect(Collectors.toList());
 
