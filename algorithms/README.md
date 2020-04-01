@@ -50,6 +50,9 @@ Where: O(N) -linear time, O(1) - constant time.
 * Arrays allow fast reads
 * Linked lists allow fast inserts and deletes
 
+## Queue and Stack
+The _queue_ is called a FIFO data structure: First In, First Out. In
+contrast, a _stack_ is a LIFO data structure: Last In, First Out.
 
 ## How does Divide&Conquer(D&C) approach work?
 D&C works by breaking a problem down into smaller and smaller
