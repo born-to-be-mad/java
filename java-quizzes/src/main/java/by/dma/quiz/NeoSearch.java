@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
+ * Quiz on Streams.
+ * <p>
+ * Learn what happens when the allMatch and the reduce methods of a Stream are invoked.
+ * Also, learn more about Predicate and method references.
+ *
  * @author dzmitry.marudau
  * @since 2019.6
  */
