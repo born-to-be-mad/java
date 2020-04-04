@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * Breadth-First Search algorithm for graphs.
+ * It tells if there’s a path from a node A to a node B.
+ * If there’s a path, breadth-first search will find the shortest path
  *
  * @author : Dzmitry Marudau
  * @created at : 00:59
@@ -14,6 +16,11 @@ public class BreadthFirstSearch {
     private Map<String, List<String>> graph = new HashMap<>();
 
     public boolean search(String name) {
+        /**
+         * You need to check people in the order they were added to the search list,
+         * so the search list needs to be a queue.
+         * Otherwise, you won’t get the shortest path.
+        */
         Queue<String> searchQueue = new ArrayDeque<>(graph.get(name));
 
         // This list is how you keep track of which people you've searched before.
@@ -22,6 +29,8 @@ public class BreadthFirstSearch {
         while (!searchQueue.isEmpty()) {
             String current = searchQueue.poll();
             // Only search this current if you haven't already searched them
+            // Once you check someone, make sure you don’t check them again.
+            // Otherwise, you might end up in an infinite loop
             if (!searched.contains(current)) {
                 if (isCorrectPerson(current)) {
                     System.out.printf("The required node(%s) is found!%n", current);
