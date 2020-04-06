@@ -1,11 +1,11 @@
 # IDE files
-.DS_Store
-.vscode
-.idea
-.iws
-.iml
-.ipr
-.history
+**/*.DS_Store
+**/*.vscode
+**/*.idea
+**/*.iws
+**/*.iml
+**/*.ipr
+**/*.history
 
 # dependencies
 node_modules
