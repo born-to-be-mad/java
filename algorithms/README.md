@@ -1,6 +1,6 @@
 # Algorithms written in Java
 
-## What is recursion?
+## What is a recursion?
 _Recursion_ is the process in which when a function calls itself directly or indirectly. This corresponding function is called _recursion function_.
 
 Every recursive function has two parts: 
@@ -45,11 +45,14 @@ Operation | Arrays | Lists
 *INSERTIONS* | `O(N)`| **O(1)**
 *DELETION* | `O(N)` | **O(1)**
 
-Where: O(N) -linear time, O(1) - constant time.
+Where: O(N) - linear time, O(1) - constant time.
  
 * Arrays allow fast reads
 * Linked lists allow fast inserts and deletes
 
+## Queue and Stack
+The _queue_ is called a FIFO data structure: First In, First Out.
+The _stack_ is a LIFO data structure: Last In, First Out.
 
 ## How does Divide&Conquer(D&C) approach work?
 D&C works by breaking a problem down into smaller and smaller
@@ -58,3 +61,5 @@ _Steps_:
 1. Figure out a simple case as the base case.
 2. Figure out how to reduce your problem and get to the base case.
  
+## Graphs and trees
+A _tree_ is a special type of graph, where no edges ever point back. 
