@@ -63,3 +63,11 @@ _Steps_:
  
 ## Graphs and trees
 A _tree_ is a special type of graph, where no edges ever point back. 
+A graph with weights is called a _weighted graph_. 
+A graph without weights is called an _unweighted graph.
+
+* To calculate the shortest path in an unweighted graph, use _breadth-first search.
+ 
+* To calculate the shortest path in a weighted graph, use _Dijkstra’s algorithm. 
+  Dijkstra’s algorithm works when all the weights are positive.
+  Dijkstra’s algorithm only works with directed _acyclic_ graphs,called DAG.
