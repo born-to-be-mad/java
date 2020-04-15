@@ -4,7 +4,7 @@ package by.dma.challenge.week25;
  * Created by Dzmitry Marudau on 04.11.2016.
  */
 
-import java.util.*;
+import java.util.Scanner;
 
 public class AppendAndDelete {
 

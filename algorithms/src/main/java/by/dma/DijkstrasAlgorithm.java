@@ -17,10 +17,10 @@ public class DijkstrasAlgorithm {
     private Map<String, Map<String, Double>> graph = new HashMap<>();
 
     // The costs table to store the costs for each node(how long it takes to get to that node from the start.)
-    Map<String, Double> costs = new HashMap<>();
+    private Map<String, Double> costs = new HashMap<>();
 
     // the parents table
-    Map<String, String> parents = new HashMap<>();
+    private Map<String, String> parents = new HashMap<>();
 
     // an array to keep track of all the nodes already processed, because we don’t need to process a node more than once
     private List<String> processed = new ArrayList<>();

@@ -11,29 +11,28 @@ public class LilyHomework {
         int n = sc.nextInt();
         long[] a = new long[n];
         long[] b = new long[n];
-        while((n--)>0) {
+        while ((n--) > 0) {
             b[n] = a[n] = sc.nextLong();
             b[n] = a[n];
         }
         boolean flag = true;
-        n= a.length-1;
-        int aSwaps=0;
-        int bSwaps=0;
-        while ( flag ) {
+        n = a.length - 1;
+        int aSwaps = 0;
+        int bSwaps = 0;
+        while (flag) {
             flag = false;
-            for( int j=0;  j < n;  j++ )
-            {
-                if ( a[j] < a[j+1]) {
+            for (int j = 0; j < n; j++) {
+                if (a[j] < a[j + 1]) {
                     long temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
                     aSwaps++;
                     flag = true;
                 }
-                if ( b[j] > b[j+1]) {
+                if (b[j] > b[j + 1]) {
                     long temp = b[j];
-                    b[j] = b[j+1];
-                    b[j+1] = temp;
+                    b[j] = b[j + 1];
+                    b[j + 1] = temp;
                     bSwaps++;
                     flag = true;
                 }

@@ -10,12 +10,14 @@ import java.util.Arrays;
  * @since 2020.1
  */
 public class BinarySearch {
+
     /**
      * Search for the integer number in th array.If the
      * item is in the array, the function returns its position.
      *
      * @param sortedArray the sorted array of integers
      * @param item        the integer to search for
+     * @return the result
      */
     Integer binarySearch(int[] sortedArray, int item) {
         int low = 0;
