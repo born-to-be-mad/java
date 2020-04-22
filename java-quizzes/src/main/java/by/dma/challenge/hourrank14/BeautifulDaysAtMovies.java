@@ -1,4 +1,4 @@
-package by.dma.challenges.hourrank14;
+package by.dma.challenge.hourrank14;
 
 import java.util.Scanner;
 
