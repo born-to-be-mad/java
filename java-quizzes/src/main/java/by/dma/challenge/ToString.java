@@ -1,6 +1,11 @@
 package by.dma.challenge;
 
 /**
+ * Quiz on Constructors/Exceptions.
+ * Constructors in Java are used to construct the object.
+ * There are also some rules, every class in Java constructors, whether you declare it explicitly or not.
+ * If we don't declare any constructor in the class the default constructor will be invoked.
+ *
  * @author dzmitry.marudau
  * @since 2019.6
  */
