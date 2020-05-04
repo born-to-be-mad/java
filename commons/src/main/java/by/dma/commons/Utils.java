@@ -1,13 +1,12 @@
 package by.dma.commons;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Utils {
 
-    public static String getMessage() {
-        return "Hello!";
+    public String toJDbcParams(List<Integer> ids) {
+        List<String> elements = Collections.nCopies(ids.size(), "?");
+        return String.join(",", elements);
     }
-
-    public static void doStuff() {
-        System.out.println("doing stuff...");
-    }
-
 }
