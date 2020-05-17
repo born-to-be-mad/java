@@ -1,4 +1,4 @@
-package by.dma.challenge.jav8;
+package by.dma.challenge.java8;
 
 import java.util.ArrayList;
 import java.util.Collections;
