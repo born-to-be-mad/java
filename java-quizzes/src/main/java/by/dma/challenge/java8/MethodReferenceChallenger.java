@@ -1,6 +1,8 @@
-package by.dma.challenge;
+package by.dma.challenge.java8;
 
 /**
+ * Quiz on Method Reference: what is the difference between Method Reference and lambda when they are invoked.
+ *
  * @author dzmitry.marudau
  * @since 2019.4
  */
