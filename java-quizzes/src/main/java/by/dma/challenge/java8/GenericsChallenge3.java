@@ -1,11 +1,11 @@
-package by.dma.challenge;
+package by.dma.challenge.java8;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * Java 8 or higher.
+ * Quiz on GenericsChallenge3(Java 8 or higher): how to use generics and create generic components using this knowledge.
  * @author dzmitry.marudau
  * @since 2019.08
  */
