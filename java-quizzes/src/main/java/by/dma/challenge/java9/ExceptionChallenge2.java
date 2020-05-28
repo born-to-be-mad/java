@@ -1,8 +1,9 @@
-package by.dma.challenge;
+package by.dma.challenge.java9;
 
 import java.io.Closeable;
 
 /**
+ * Quiz on Exceptions: how to use Exceptions and try with resources.
  * @author dzmitry.marudau
  * @since 2019.8
  */
