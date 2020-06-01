@@ -1,10 +1,12 @@
-package by.dma.challenge;
+package by.dma.challenge.java6;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Arrays;
 
 /**
+ * Quiz on Reflections: how to manipulate classes with reflection.
+ *
  * @author dzmitry.marudau
  * @since 2019.08
  */
@@ -15,11 +17,12 @@ public class ReflectionChallenge2 {
 
         System.out.println(Jedi.class.getAnnotation(Column.class).name());
         //the line above is equal the line below
-        Arrays.stream(Jedi.class.getDeclaredFields()).forEach(field -> {
-            if ("attackType".equals(field.getName())) {
-                System.out.println(field.getAnnotation(Column.class).name());
-            }
-        });
+        Arrays.stream(Jedi.class.getDeclaredFields())
+              .forEach(field -> {
+                  if ("attackType".equals(field.getName())) {
+                      System.out.println(field.getAnnotation(Column.class).name());
+                  }
+              });
     }
 
     @Table(name = "jedi")
@@ -37,6 +40,7 @@ public class ReflectionChallenge2 {
         String name();
     }
 
+    @Retention(RetentionPolicy.RUNTIME)
     @interface Column {
         String name();
     }
