@@ -1,8 +1,10 @@
-package by.dma.challenge;
+package by.dma.challenge.java9;
 
 import java.util.Set;
 
 /**
+ * Quiz to lear details about working with Streams in Java.
+ *
  * @author dzmitry.marudau
  * @since 2019.4
  */
@@ -10,14 +12,14 @@ public class StreamDistinctChallenge {
 
     public static void main(String... doYourBest) {
 
-        Set.of(new Warrior("Ezio"),
-               new Warrior("Ezio"),
-               new Warrior("Kratos"),
-               new Warrior("Cloud"),
-               new Warrior("Alucard"))
-            .stream()
-            .distinct()
-            .forEach(w -> System.out.println(w.name));
+        Set<Warrior> warriors =
+                Set.of(new Warrior("Ezio"), new Warrior("Ezio"),
+                       new Warrior("Kratos"),
+                       new Warrior("Cloud"),
+                       new Warrior("Alucard"));
+        warriors.stream()
+                .distinct()
+                .forEach(w -> System.out.println(w.name));
     }
 
     static class Warrior {
