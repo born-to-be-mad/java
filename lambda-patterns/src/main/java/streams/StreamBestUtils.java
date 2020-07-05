@@ -3,8 +3,11 @@ package streams;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -91,8 +94,14 @@ public class StreamBestUtils {
         return e -> clazz.isInstance(e) ? Stream.of(clazz.cast(e)) : null;
     }
 
+    public static <T> Predicate<T> distinct(long atLeast) {
+        ConcurrentHashMap<T, Long> map = new ConcurrentHashMap<>();
+        return t -> map.merge(t, 1L, Long::sum) == atLeast;
+    }
+
     public static void main(String[] args) {
-        // create source generating Cartesian product of the list of strings
+        // #####################################################################
+        // # CREATE SOURCE GENERATING CARTESIAN PRODUCT OF THE LIST OF STRINGS #
         List<List<String>> input = asList(
                 asList("a", "b", "c"),
                 asList("x", "y"),
@@ -115,6 +124,26 @@ public class StreamBestUtils {
                 .orElse(() -> Stream.of(""));
 
         s.get().forEach(System.out::println);
+
+        System.out.println("############################################################");
+        // ############################################################
+        // ### LEAVE VALUES IN THE STREAM REPEATED AT LEAST N TIMES ###
+        // variant I
+        List<String> list = asList("Hello", "world",
+                                   "Hello", "Java",
+                                   "I", "like", "Java",
+                                   "It's", "my", "world");
+        Map<String, Long> counts =
+                list.stream()
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        counts.values()
+              .removeIf(cnt -> cnt < 2);
+        counts.keySet().forEach(System.out::println);
+
+        System.out.println("############################################################");
+        // variant II
+        list.stream().filter(distinct(2)).forEach(System.out::println);
+
     }
 }
 
