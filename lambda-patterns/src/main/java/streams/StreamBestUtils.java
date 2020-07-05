@@ -1,12 +1,14 @@
 package streams;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -43,6 +45,52 @@ public class StreamBestUtils {
                         .mapToObj(idx -> new IndexedValue<>(idx, list.get(idx)));
     }
 
+    /**
+     * Select only elements of defined type from Stream
+     *
+     * @param list the source list
+     * @return the stream of children
+     */
+    public static Stream<Element> filterByType(NodeList list) {
+        // approach I: casting[-], always need filer+map [-]
+        Stream<Element> filteredResult1 =
+                IntStream.range(0, list.getLength())
+                         .mapToObj(list::item)
+                         .filter(node -> node instanceof Element)
+                         .map(node -> (Element) node);
+
+        // approach II: casting[-], always need filer+map [-]
+        Stream<Element> filteredResult2 =
+                IntStream.range(0, list.getLength())
+                         .mapToObj(list::item)
+                         .filter(Element.class::isInstance)
+                         .map(Element.class::cast);
+
+        // approach III: readability[-]
+        Stream<Element> filteredResult3 =
+                select(
+                        IntStream.range(0, list.getLength())
+                                 .mapToObj(list::item),
+                        Element.class
+                );
+
+        // approach IV: best practices
+        Stream<Element> filteredResult4 =
+                IntStream.range(0, list.getLength())
+                         .mapToObj(list::item)
+                         .flatMap(select(Element.class));
+        return filteredResult4;
+    }
+
+    public static <T, TT> Stream<TT> select(Stream<T> stream, Class<TT> clazz) {
+        return stream.filter(clazz::isInstance)
+                     .map(clazz::cast);
+    }
+
+    public static <T, TT> Function<T, Stream<TT>> select(Class<TT> clazz) {
+        return e -> clazz.isInstance(e) ? Stream.of(clazz.cast(e)) : null;
+    }
+
     public static void main(String[] args) {
         // create source generating Cartesian product of the list of strings
         List<List<String>> input = asList(
@@ -50,10 +98,23 @@ public class StreamBestUtils {
                 asList("x", "y"),
                 asList("1", "2", "3"));
 
+        //base version
         input.get(0).stream().flatMap(a ->
         input.get(1).stream().flatMap(b ->
         input.get(2).stream().map(c -> a + b + c)))
         .forEach(System.out::println);
+
+        //improved version
+        Supplier<Stream<String>> s =
+                input.stream()
+                // Stream<List<String>>
+                .<Supplier<Stream<String>>>map(list -> list::stream)
+                // Stream <Supplier<Stream<List<String>>>>
+                .reduce((sup1, sup2) -> () -> sup1.get().flatMap(e1 -> sup2.get()
+                                                                           .map(e2 -> e1 + e2)))
+                .orElse(() -> Stream.of(""));
+
+        s.get().forEach(System.out::println);
     }
 }
 
