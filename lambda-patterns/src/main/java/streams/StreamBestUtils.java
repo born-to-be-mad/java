@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import static java.util.Arrays.asList;
+
 /**
  * How to solve different tasks via Stream API based on best practices
  *
@@ -40,6 +42,19 @@ public class StreamBestUtils {
         return IntStream.range(0, list.size())
                         .mapToObj(idx -> new IndexedValue<>(idx, list.get(idx)));
     }
+
+    public static void main(String[] args) {
+        // create source generating Cartesian product of the list of strings
+        List<List<String>> input = asList(
+                asList("a", "b", "c"),
+                asList("x", "y"),
+                asList("1", "2", "3"));
+
+        input.get(0).stream().flatMap(a ->
+        input.get(1).stream().flatMap(b ->
+        input.get(2).stream().map(c -> a + b + c)))
+        .forEach(System.out::println);
+    }
 }
 
 
@@ -53,7 +68,8 @@ class Group {
     }
 
     public Stream<Group> neighbors() {
-        return nameToGroups.values().stream();
+        return nameToGroups.values()
+                           .stream();
     }
 
     public Stream<Mentor> mentors() {
