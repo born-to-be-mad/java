@@ -1,5 +1,7 @@
 package streams;
 
+import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.toList;
 
 /**
  * How to solve different tasks via Stream API based on best practices.
@@ -156,7 +161,30 @@ public class StreamBestUtils {
 
     }
 
+    public static <K, V> Map<K, List<V>> entriesToMap(List<Map<K, V>> input) {
+        return input.stream()
+                    .flatMap(map -> map.entrySet().stream())
+                    .collect(groupingBy(Map.Entry::getKey,
+                                        mapping(Map.Entry::getValue, toList())));
+    }
+
     public static void main(String[] args) {
+        // ############################
+        List<Map<Character, Integer>> mapList = new ArrayList<>();
+        mapList.add(Stream.of(
+                new AbstractMap.SimpleEntry<>('a', 1),
+                new AbstractMap.SimpleEntry<>('b', 2)
+        ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        mapList.add(Stream.of(
+                new AbstractMap.SimpleEntry<>('a', 3),
+                new AbstractMap.SimpleEntry<>('b', 4),
+                new AbstractMap.SimpleEntry<>('c', 5),
+                new AbstractMap.SimpleEntry<>('d', 6)
+        ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+
+        Map<Character, List<Integer>> characterListMap = entriesToMap(mapList);
+        System.out.printf("%s -> %s%n", mapList, characterListMap);
+
         // ############################
         System.out.println("### takeWhile(not short-circuit) Java 8 ###");
         Stream.of(1, 2, 3, -3, 4, 5, 6)
@@ -202,7 +230,7 @@ public class StreamBestUtils {
                                    "It's", "my", "world");
         Map<String, Long> counts =
                 list.stream()
-                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                    .collect(groupingBy(Function.identity(), Collectors.counting()));
         counts.values()
               .removeIf(cnt -> cnt < 2);
         counts.keySet().forEach(System.out::println);
