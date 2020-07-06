@@ -1,16 +1,21 @@
 package streams;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -50,7 +55,7 @@ public class StreamBestUtils {
     }
 
     /**
-     * Select only elements of defined type from Stream
+     * Select only elements of defined type from Stream.
      *
      * @param list the source list
      * @return the stream of children
@@ -100,6 +105,12 @@ public class StreamBestUtils {
         return t -> map.merge(t, 1L, Long::sum) == atLeast;
     }
 
+    /**
+     * Not short-circuit takeWhile implementation.
+     * @param predicate input predicate
+     * @param <T> type of pbjects
+     * @return result stream
+     */
     public static <T> Predicate<T> takeWhile(Predicate<T> predicate) {
         AtomicBoolean matched = new AtomicBoolean();
         return t -> {
@@ -112,6 +123,36 @@ public class StreamBestUtils {
             }
             return true;
         };
+    }
+
+    /**
+     * Short-circuit takeWhile implementation.
+     * @param stream input stream
+     * @param predicate input predicate
+     * @param <T> type of pbjects
+     * @return result stream
+     */
+    public static <T> Stream<T> takeWhile(Stream<T> stream, Predicate<T> predicate) {
+        Spliterator<T> src = stream.spliterator();
+        Spliterator<T> res = new Spliterators.AbstractSpliterator<T>(src.estimateSize(),
+                                                                     src.characteristics() & ~Spliterator.SIZED & ~Spliterator.SUBSIZED) {
+
+            boolean finished = false;
+            T next;
+
+            @Override
+            public boolean tryAdvance(Consumer<? super T> action) {
+                if ((finished || !src.tryAdvance(t -> next = t) || !predicate.test(next))) {
+                    finished = true;
+                    return false;
+                }
+                action.accept(next);
+                return true;
+            }
+        };
+        return StreamSupport.stream(res, stream.isParallel())
+                            .onClose(stream::close);
+
     }
 
     public static void main(String[] args) {
