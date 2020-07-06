@@ -1,7 +1,6 @@
 package streams;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Spliterator;
@@ -139,8 +138,8 @@ public class StreamBestUtils {
                 src.estimateSize(),
                 src.characteristics() & ~Spliterator.SIZED & ~Spliterator.SUBSIZED) {
 
-            boolean finished = false;
-            T next;
+            private boolean finished = false;
+            private T next;
 
             @Override
             public boolean tryAdvance(Consumer<? super T> action) {
