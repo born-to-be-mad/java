@@ -24,7 +24,7 @@ import org.w3c.dom.NodeList;
 import static java.util.Arrays.asList;
 
 /**
- * How to solve different tasks via Stream API based on best practices
+ * How to solve different tasks via Stream API based on best practices.
  *
  * @author dzmitry.marudau
  * @since 2020.3
@@ -114,6 +114,7 @@ public class StreamBestUtils {
     public static <T> Predicate<T> takeWhile(Predicate<T> predicate) {
         AtomicBoolean matched = new AtomicBoolean();
         return t -> {
+            System.out.println("checking...");
             if (matched.get()) {
                 return false;
             }
@@ -134,8 +135,9 @@ public class StreamBestUtils {
      */
     public static <T> Stream<T> takeWhile(Stream<T> stream, Predicate<T> predicate) {
         Spliterator<T> src = stream.spliterator();
-        Spliterator<T> res = new Spliterators.AbstractSpliterator<T>(src.estimateSize(),
-                                                                     src.characteristics() & ~Spliterator.SIZED & ~Spliterator.SUBSIZED) {
+        Spliterator<T> res = new Spliterators.AbstractSpliterator<T>(
+                src.estimateSize(),
+                src.characteristics() & ~Spliterator.SIZED & ~Spliterator.SUBSIZED) {
 
             boolean finished = false;
             T next;
@@ -157,10 +159,14 @@ public class StreamBestUtils {
 
     public static void main(String[] args) {
         // ############################
-        System.out.println("### takeWhile Java 8 ###");
+        System.out.println("### takeWhile(not short-circuit) Java 8 ###");
         Stream.of(1, 2, 3, -3, 4, 5, 6)
               .filter(takeWhile(x -> x > 0))
               .forEach(System.out::println);
+
+        System.out.println("### takeWhile(short-circuit) Java 8 ###");
+        takeWhile(Stream.of(1, 2, 3, -3, 4, 5, 6), x -> x > 0)
+                .forEach(System.out::println);
 
         // #####################################################################
         // # CREATE SOURCE GENERATING CARTESIAN PRODUCT OF THE LIST OF STRINGS #
