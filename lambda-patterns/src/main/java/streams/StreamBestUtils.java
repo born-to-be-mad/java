@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -99,7 +100,27 @@ public class StreamBestUtils {
         return t -> map.merge(t, 1L, Long::sum) == atLeast;
     }
 
+    public static <T> Predicate<T> takeWhile(Predicate<T> predicate) {
+        AtomicBoolean matched = new AtomicBoolean();
+        return t -> {
+            if (matched.get()) {
+                return false;
+            }
+            if (!predicate.test(t)) {
+                matched.set(true);
+                return false;
+            }
+            return true;
+        };
+    }
+
     public static void main(String[] args) {
+        // ############################
+        System.out.println("### takeWhile Java 8 ###");
+        Stream.of(1, 2, 3, -3, 4, 5, 6)
+              .filter(takeWhile(x -> x > 0))
+              .forEach(System.out::println);
+
         // #####################################################################
         // # CREATE SOURCE GENERATING CARTESIAN PRODUCT OF THE LIST OF STRINGS #
         List<List<String>> input = asList(
