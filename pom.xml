@@ -12,7 +12,7 @@
     <!-- https://maven.apache.org/general.html#encoding-warning -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>11</java.version>
+    <java.version>14</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
@@ -25,7 +25,7 @@
     <lambda.patterns.version>2020.1.0</lambda.patterns.version>
 
     <!-- External dependencies and versioning -->
-    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
     <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
     <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
