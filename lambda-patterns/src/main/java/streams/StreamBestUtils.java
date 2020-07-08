@@ -173,13 +173,14 @@ public class StreamBestUtils {
         List<Map<Character, Integer>> mapList = new ArrayList<>();
         mapList.add(Stream.of(
                 new AbstractMap.SimpleEntry<>('a', 1),
-                new AbstractMap.SimpleEntry<>('b', 2)
+                new AbstractMap.SimpleEntry<>('c', 2),
+                new AbstractMap.SimpleEntry<>('b', 3)
         ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
         mapList.add(Stream.of(
-                new AbstractMap.SimpleEntry<>('a', 3),
-                new AbstractMap.SimpleEntry<>('b', 4),
-                new AbstractMap.SimpleEntry<>('c', 5),
-                new AbstractMap.SimpleEntry<>('d', 6)
+                new AbstractMap.SimpleEntry<>('c', 4),
+                new AbstractMap.SimpleEntry<>('b', 5),
+                new AbstractMap.SimpleEntry<>('a', 6),
+                new AbstractMap.SimpleEntry<>('d', 7)
         ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
 
         Map<Character, List<Integer>> characterListMap = entriesToMap(mapList);
