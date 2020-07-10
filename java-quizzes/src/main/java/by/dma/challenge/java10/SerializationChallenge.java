@@ -1,4 +1,4 @@
-package by.dma.quiz;
+package by.dma.challenge.java10;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- * Goal: to learn how to serialize and deserialize an object. Also, what variable will be saved when serializing.
+ * Quiz: to learn how to serialize and deserialize an object. Also, what variable will be saved when serializing.
  *
  * @author dzmitry.marudau
  * @since 2019.4
@@ -19,6 +19,7 @@ public class SerializationChallenge {
 
         try (var fs = new FileOutputStream("SerTest.ser");
              var os = new ObjectOutputStream(fs)) {
+
             var xmen = new Xmen();
             xmen.name = "Wolverine";
             xmen.power = "Healing and defensive powers";
@@ -30,6 +31,7 @@ public class SerializationChallenge {
 
         try (var fis = new FileInputStream("SerTest.ser");
              var ois = new ObjectInputStream(fis)) {
+
             var deserializedXmen = (Xmen) ois.readObject();
             System.out.println(deserializedXmen.name);
             System.out.println(deserializedXmen.power);
