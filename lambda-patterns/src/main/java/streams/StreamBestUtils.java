@@ -220,7 +220,7 @@ public class StreamBestUtils {
         takeWhile(Stream.of(1, 2, 3, -3, 4, 5, 6), x -> x > 0).forEach(System.out::println);
 
         // #####################################################################
-        // # CREATE SOURCE GENERATING CARTESIAN PRODUCT OF THE LIST OF STRINGS #
+        // # CREATE SOURCE GENERATING CARTESIAN PRODUCT OF THE LISTS OF STRINGS #
         System.out.println("#### CARTESIAN ####");
         List<List<String>> input = asList(
                 asList("a", "b", "c"),
@@ -234,20 +234,20 @@ public class StreamBestUtils {
         .forEach(System.out::println);
 
         //improved version
-        Supplier<Stream<String>> s =
+        Stream<Supplier<Stream<String>>> streamOfStreamSuplliers =
                 input.stream()
-                // Stream<List<String>>
-                .<Supplier<Stream<String>>>map(list -> list::stream)
-                // Stream <Supplier<Stream<List<String>>>>
-                .reduce((sup1, sup2) -> () -> sup1.get()
-                                                  .flatMap(e1 -> sup2.get().map(e2 -> e1 + e2)))
+                     .map(list -> list::stream);
+
+        Supplier<Stream<String>> s = streamOfStreamSuplliers
+                .reduce((sup1, sup2) ->
+                        () -> sup1.get().flatMap(e1 -> sup2.get().map(e2 -> e1 + e2)))
                 .orElse(() -> Stream.of(""));
 
         s.get().forEach(System.out::println);
 
-        System.out.println("#### distinct ####");
         // ############################################################
         // ### LEAVE VALUES IN THE STREAM REPEATED AT LEAST N TIMES ###
+        System.out.println("#### distinct ####");
         // variant I
         List<String> list = asList("Hello", "world", "Hello", "Java", "I", "like", "Java", "It's", "my", "world");
         Map<String, Long> counts = list.stream().collect(groupingBy(Function.identity(), Collectors.counting()));
