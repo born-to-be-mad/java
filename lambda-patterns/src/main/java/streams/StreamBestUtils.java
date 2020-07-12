@@ -94,14 +94,23 @@ public class StreamBestUtils {
         return filteredResult4;
     }
 
+    /**
+     * Leave only elements of the given type in the input stream.
+     */
     public static <T, TT> Stream<TT> select(Stream<T> stream, Class<TT> clazz) {
         return stream.filter(clazz::isInstance).map(clazz::cast);
     }
 
+    /**
+     * Create a mapper function to apply to each Stream element filtering by input class.
+     */
     public static <T, TT> Function<T, Stream<TT>> select(Class<TT> clazz) {
         return e -> clazz.isInstance(e) ? Stream.of(clazz.cast(e)) : null;
     }
 
+    /**
+     * Leave only those values that repeat at least N times.
+     */
     public static <T> Predicate<T> distinct(long atLeast) {
         ConcurrentHashMap<T, Long> map = new ConcurrentHashMap<>();
         return t -> map.merge(t, 1L, Long::sum) == atLeast;
