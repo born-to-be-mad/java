@@ -24,9 +24,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 /**
  * How to solve different tasks via Stream API based on best practices.
@@ -170,8 +172,10 @@ public class StreamBestUtils {
      */
     public static <T> Stream<T> takeWhile(Stream<T> stream, Predicate<T> predicate) {
         Spliterator<T> src = stream.spliterator();
-        Spliterator<T> res = new Spliterators.AbstractSpliterator<>(src.estimateSize(),
-                                                                    src.characteristics() & ~Spliterator.SIZED & ~Spliterator.SUBSIZED) {
+        Spliterator<T> spliterator =
+                new Spliterators.AbstractSpliterator<>(
+                        src.estimateSize(),
+                        src.characteristics() & ~Spliterator.SIZED & ~Spliterator.SUBSIZED) {
 
             private boolean finished = false;
             private T next;
@@ -186,13 +190,15 @@ public class StreamBestUtils {
                 return true;
             }
         };
-        return StreamSupport.stream(res, stream.isParallel()).onClose(stream::close);
-
+        return StreamSupport.stream(spliterator, stream.isParallel())
+                            .onClose(stream::close);
     }
 
     public static <K, V> Map<K, List<V>> entriesToMap(List<Map<K, V>> input) {
-        return input.stream().flatMap(map -> map.entrySet().stream()).collect(
-                groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, toList())));
+        return input.stream()
+                    .flatMap(map -> map.entrySet().stream())
+                    .collect(groupingBy(Map.Entry::getKey,
+                                        mapping(Map.Entry::getValue, toList())));
     }
 
     public static void main(String[] args) {
@@ -209,14 +215,14 @@ public class StreamBestUtils {
                         new AbstractMap.SimpleEntry<>('a', 1),
                         new AbstractMap.SimpleEntry<>('c', 2),
                         new AbstractMap.SimpleEntry<>('b', 3)
-        ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        ).collect(toMap(Map.Entry::getKey, Map.Entry::getValue)));
         mapList.add(
                 Stream.of(
                         new AbstractMap.SimpleEntry<>('c', 4),
                         new AbstractMap.SimpleEntry<>('b', 5),
                         new AbstractMap.SimpleEntry<>('a', 6),
                         new AbstractMap.SimpleEntry<>('d', 7)
-        ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        ).collect(toMap(Map.Entry::getKey, Map.Entry::getValue)));
 
         Map<Character, List<Integer>> characterListMap = entriesToMap(mapList);
         System.out.printf("%s -> %s%n", mapList, characterListMap);
@@ -259,13 +265,16 @@ public class StreamBestUtils {
         System.out.println("#### distinct ####");
         // variant I
         List<String> list = asList("Hello", "world", "Hello", "Java", "I", "like", "Java", "It's", "my", "world");
-        Map<String, Long> counts = list.stream().collect(groupingBy(Function.identity(), Collectors.counting()));
+        Map<String, Long> counts = list.stream()
+                                       .collect(groupingBy(Function.identity(), counting()));
         counts.values().removeIf(cnt -> cnt < 2);
         counts.keySet().forEach(System.out::println);
 
         System.out.println("############################################################");
         // variant II
-        list.stream().filter(distinct(2)).forEach(System.out::println);
+        list.stream()
+            .filter(distinct(2))
+            .forEach(System.out::println);
 
     }
 
