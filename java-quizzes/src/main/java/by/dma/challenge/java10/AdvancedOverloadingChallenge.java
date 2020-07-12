@@ -1,7 +1,8 @@
 package by.dma.challenge.java10;
 
 /**
- * TODO
+ *  How to manipulate Advanced Overloading, which allows the JVM will choose the method that results in the best
+ *  performance.
  *
  * @author dzmitry.marudau
  * @since 2020.3
@@ -19,13 +20,24 @@ public class AdvancedOverloadingChallenge {
         executeAction(d);
         executeAction(o);
         executeAction(l);
+        System.out.println(x);
 
+        x = "";
+        System.out.println("######");
         executeAction(1);
         executeAction(1.0);
         executeAction(Double.valueOf("5"));
         executeAction(1L);
-
         System.out.println(x);
+
+        x = "";
+        System.out.println("######");
+        executeAction(1F);
+        executeAction(1.0);
+        executeAction(new StackOverflowError());
+        executeAction(1);
+        System.out.println(x);
+
     }
 
     static void executeAction(int... var) {
