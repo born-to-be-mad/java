@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +15,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -233,6 +233,7 @@ public class StreamBestUtils {
 
         System.out.println("### takeWhile(short-circuit) Java 8 ###");
         takeWhile(Stream.of(1, 2, 3, -3, 4, 5, 6), x -> x > 0).forEach(System.out::println);
+        takeWhile(new Random().ints().boxed(), x -> x % 10 != 0).forEach(System.out::println);
 
         // #####################################################################
         // # CREATE SOURCE GENERATING CARTESIAN PRODUCT OF THE LISTS OF STRINGS #
