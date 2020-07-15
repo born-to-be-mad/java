@@ -1,6 +1,7 @@
 package by.dma.challenge;
 
 /**
+ * How to use constructors overloading in order to make your code flexible and easy to maintain.
  * @author dzmitry.marudau
  * @since 2019.09
  */
