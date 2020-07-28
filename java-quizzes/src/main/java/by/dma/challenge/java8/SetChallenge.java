@@ -1,9 +1,10 @@
-package by.dma.challenge;
+package by.dma.challenge.java8;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * How to manipulate the equals and hashcode methods and use them to your advantage to use Set Collection.
  * @author dzmitry.marudau
  * @since 2019.4
  */
