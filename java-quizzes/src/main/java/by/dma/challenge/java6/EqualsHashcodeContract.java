@@ -1,4 +1,4 @@
-package by.dma.challenge;
+package by.dma.challenge.java6;
 
 import java.util.HashSet;
 import java.util.Set;
