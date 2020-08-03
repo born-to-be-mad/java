@@ -1,4 +1,4 @@
-package by.dma.challenge;
+package by.dma.challenge.java6;
 
 /**
  * Quiz on Casting: how to manipulate Java types in a deeper way by solving this quiz.
