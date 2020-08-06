@@ -1,4 +1,4 @@
-package by.dma.challenge;
+package by.dma.challenge.java6;
 
 /**
  * Quiz on Types, Values and Variables: give you deep understanding of using double/float values in java.
