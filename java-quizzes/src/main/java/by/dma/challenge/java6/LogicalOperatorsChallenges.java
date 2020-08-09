@@ -1,4 +1,4 @@
-package by.dma.challenge;
+package by.dma.challenge.java6;
 
 /**
  * Quiz on operators.
@@ -18,8 +18,7 @@ public class LogicalOperatorsChallenges {
             venom++;
         }
 
-        if (++carnage == 50 | spiderMan++ == 11 | spiderMan++ == 12 |
-            spiderMan++ == 13 | spiderMan++ == 14) {
+        if (++carnage == 50 | spiderMan++ == 11 | spiderMan++ == 12 | spiderMan++ == 13 | spiderMan++ == 14) {
             venom++;
         }
 
