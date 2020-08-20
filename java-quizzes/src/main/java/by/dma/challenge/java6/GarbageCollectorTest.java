@@ -2,7 +2,7 @@ package by.dma.challenge.java6;
 
 /**
  * How many objects will be eligible for the garbage collector after the executeAction() invocation?
- *
+ * The JVM garbage collector identifies objects that are no longer needed and deletes them from memory.
  * @author dzmitry.marudau
  * @since 2020.3
  */
