@@ -23,16 +23,15 @@ public class ThenComparingChallenge {
         jediList.add(new Jedi("Obi Wan", 7));
 
         Comparator<Jedi> comparator = Comparator.comparing(Jedi::getName)
-                                                .thenComparing(
-                                                    (a1, a2) -> a2.age.compareTo(a1.getAge()));
+                                                .thenComparing((a1, a2) -> a2.age.compareTo(a1.getAge()));
 
-        Collections.sort(jediList, comparator);
+        jediList.sort(comparator);
         jediList.forEach(j -> System.out.println(j.name + ":" + j.age));
     }
 
     static class Jedi {
-        String name;
-        Integer age;
+        private String name;
+        private Integer age;
 
         public Jedi(String name, Integer age) {
             this.name = name;
