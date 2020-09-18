@@ -1,4 +1,4 @@
-package by.dma.challenge;
+package by.dma.challenge.java10;
 
 /**
  * Quiz on Threads.
