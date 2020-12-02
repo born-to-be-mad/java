@@ -4,14 +4,27 @@
   <parent>
     <groupId>by.dma</groupId>
     <artifactId>playing-with-java</artifactId>
-    <version>2020.1.0</version>
+    <version>2020.4.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+    <jna.version>5.6.0</jna.version>
+  </properties>
 
   <!-- common INFO -->
   <artifactId>commons</artifactId>
   <version>2020.1.0</version>
   <packaging>jar</packaging>
   <name>Core Module with different Utility classes</name>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna-platform</artifactId>
+      <version>${jna.version}</version>
+    </dependency>
+  </dependencies>
 
 </project>

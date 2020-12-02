@@ -15,6 +15,8 @@ public class BeerProcessorChallenger {
     private static int drunkenness;
 
     public static void main(String... doYourBest) {
+        System.out.println("democrats understood clouting".hashCode());
+
         Supplier<Integer> moeBeerSupplier = () -> drunkenness = 5; // Line 10
         drunkenness = 10;
         Function<Integer, Integer> processBeer = beerProcessor -> drunkenness = (beerProcessor + 2);

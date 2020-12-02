@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>by.dma</groupId>
   <artifactId>playing-with-java</artifactId>
-  <version>2020.1.0</version>
+  <version>2020.4.0</version>
   <packaging>pom</packaging>
   <name>Playing with Java via different small projects</name>
 
@@ -25,6 +25,7 @@
     <java.quizzes.version>2020.1.0</java.quizzes.version>
     <how.to.version>2020.1.0</how.to.version>
     <lambda.patterns.version>2020.1.0</lambda.patterns.version>
+    <concurrency.version>2020.4.0</concurrency.version>
 
     <!-- External dependencies and versioning -->
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -46,6 +47,7 @@
     <module>java-quizzes</module>
     <module>lambda-patterns</module>
     <module>how-to</module>
+    <module>concurrency</module>
   </modules>
 
   <profiles>
@@ -83,6 +85,11 @@
         <groupId>by.dma</groupId>
         <artifactId>lambda-patterns</artifactId>
         <version>${lambda.patterns.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>by.dma</groupId>
+        <artifactId>concurrency</artifactId>
+        <version>{concurrency.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

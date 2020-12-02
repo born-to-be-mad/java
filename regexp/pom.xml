@@ -7,7 +7,7 @@
   <parent>
     <groupId>by.dma</groupId>
     <artifactId>playing-with-java</artifactId>
-    <version>2020.1.0</version>
+    <version>2020.4.0</version>
   </parent>
 
   <artifactId>regexp</artifactId>
