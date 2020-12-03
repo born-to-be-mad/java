@@ -1,6 +1,5 @@
 package by.dma.jvm;
 
-
 import com.sun.jna.Platform;
 
 /**

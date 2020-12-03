@@ -1,5 +1,7 @@
 package by.dma.jvm;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2020.4
  */
 class JVMBitVersionTest {
+
     JVMBitVersion jvmVersion = new JVMBitVersion();
 
     @Test
@@ -20,5 +23,15 @@ class JVMBitVersionTest {
         } else if (System.getProperty("sun.arch.data.model") == "32") {
             assertEquals("32-bit", jvmVersion.getUsingSystemClass());
         }
+    }
+
+    @Test
+    public void whenUsingNativeClass_thenOutputIsAsExpected() {
+        assertTrue(List.of("64-bit", "32-bit").contains(jvmVersion.getUsingNativeClass()));
+    }
+
+    @Test
+    public void whenUsingPlatformClass_thenOutputIsAsExpected() {
+        assertTrue(jvmVersion.getUsingPlatformClass());
     }
 }
