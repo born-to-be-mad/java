@@ -16,7 +16,7 @@ public class ExecutorServiceDemo {
   static final int MAX_THREADS = Runtime.getRuntime().availableProcessors() + 1;
 
   public static void main(String[] args) {
-    System.out.println("### create pool with size = " + MAX_THREADS);
+    System.out.println("### Creating pool with size = " + MAX_THREADS);
     ExecutorService pool = Executors.newFixedThreadPool(MAX_THREADS);
 
     IntStream.rangeClosed(1, 10)
