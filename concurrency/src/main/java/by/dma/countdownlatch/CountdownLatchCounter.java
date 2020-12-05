@@ -3,7 +3,7 @@ package by.dma.countdownlatch;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * TODO
+ * See {@code CountDownLatch}.
  *
  * @author dzmitry.marudau
  * @since 2020.4

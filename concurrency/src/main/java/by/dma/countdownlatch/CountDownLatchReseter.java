@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * TODO
+ * See {@code CountDownLatch}.
  *
  * @author dzmitry.marudau
  * @since 2020.4

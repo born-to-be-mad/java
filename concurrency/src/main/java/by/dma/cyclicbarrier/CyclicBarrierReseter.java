@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * See {CyclicBarrier}.
+ * See {@code CyclicBarrier}.
  *
  * @author dzmitry.marudau
  * @since 2020.4
