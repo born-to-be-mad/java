@@ -1,9 +1,9 @@
-package by.dma.countdownlatch;
+package by.dma.synchronizers.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 
 /**
- * See {@code CountDownLatch}.
+ * See {@link CountDownLatch}.
  *
  * @author dzmitry.marudau
  * @since 2020.4

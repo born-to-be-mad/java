@@ -1,4 +1,4 @@
-package by.dma.countdownlatch;
+package by.dma.synchronizers.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * See {@code CountDownLatch}.
+ * See {@link CountDownLatch}.
  *
  * @author dzmitry.marudau
  * @since 2020.4

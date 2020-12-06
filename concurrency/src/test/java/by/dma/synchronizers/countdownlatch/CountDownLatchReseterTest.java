@@ -1,4 +1,4 @@
-package by.dma.countdownlatch;
+package by.dma.synchronizers.countdownlatch;
 
 import org.junit.jupiter.api.Test;
 

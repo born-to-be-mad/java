@@ -1,4 +1,4 @@
-package by.dma.cyclicbarrier;
+package by.dma.synchronizers.cyclicbarrier;
 
 import org.junit.jupiter.api.Test;
 

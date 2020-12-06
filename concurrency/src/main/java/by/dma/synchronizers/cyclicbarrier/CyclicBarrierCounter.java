@@ -1,10 +1,10 @@
-package by.dma.cyclicbarrier;
+package by.dma.synchronizers.cyclicbarrier;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * See {@code CyclicBarrier}.
+ * See {@link CyclicBarrier}.
  *
  * @author dzmitry.marudau
  * @since 2020.4
