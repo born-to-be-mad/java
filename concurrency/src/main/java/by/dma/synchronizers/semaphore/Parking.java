@@ -4,6 +4,7 @@ import java.util.concurrent.Semaphore;
 
 /**
  * Demo for {@code Semaphore}.
+ * See {@linkplain https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Semaphore.html}.
  *
  * @author dzmitry.marudau
  * @since 2020.4
