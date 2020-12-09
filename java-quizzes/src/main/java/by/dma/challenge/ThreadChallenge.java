@@ -20,22 +20,6 @@ public class ThreadChallenge {
         yamaha.start();*/
 
         // ### Choice 2 ###
-/*        Motorcycle harley = new Motorcycle("Harley");
-        harley.start();
-        harley.join();
-
-        Motorcycle bmw = new Motorcycle("BMW");
-        bmw.setPriority(Thread.MAX_PRIORITY);
-        bmw.setDaemon(false);
-        bmw.start();
-        bmw.join();
-
-        Motorcycle yamaha = new Motorcycle("Yamaha YZ");
-        yamaha.setPriority(Thread.MIN_PRIORITY);
-        yamaha.start();
-        yamaha.join();*/
-
-        // ### Choice 3 ###
 /*        new Motorcycle("Harley").start();
 
         Motorcycle bmw = new Motorcycle("BMW");
@@ -44,12 +28,26 @@ public class ThreadChallenge {
         bmw.start();
         bmw.join();
 
-        Motorcycle yamaha = new Motorcycle("Yamaha");
+        Motorcycle yamaha = new Motorcycle("Yamaha YZF");
         yamaha.setPriority(Thread.MIN_PRIORITY);
         yamaha.start();
         yamaha.join();*/
 
-        Motorcycle harley = new Motorcycle("Harley");
+        // ### Choice 3 ###
+        new Motorcycle("Harley").start();
+
+        Motorcycle bmw = new Motorcycle("BMW");
+        bmw.setPriority(Thread.MAX_PRIORITY);
+        bmw.setDaemon(false);
+        bmw.start();
+        bmw.join();
+
+        Motorcycle yamaha = new Motorcycle("Yamaha YZF");
+        yamaha.setPriority(Thread.MIN_PRIORITY);
+        yamaha.start();
+        yamaha.join();
+
+/*        Motorcycle harley = new Motorcycle("Harley");
         harley.start();
         harley.setDaemon(false);
 
@@ -62,7 +60,7 @@ public class ThreadChallenge {
         Motorcycle yamaha = new Motorcycle("Yamaha");
         yamaha.setPriority(Thread.MIN_PRIORITY);
         yamaha.start();
-        yamaha.setDaemon(false);
+        yamaha.setDaemon(false);*/
 
 
         System.out.println(thread.wolverineAdrenaline);
