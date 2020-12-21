@@ -1,4 +1,4 @@
-package by.dma.queue;
+package by.dma.collections.queue;
 
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
