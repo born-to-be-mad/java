@@ -14,7 +14,7 @@ public class StackTraceDemo implements AutoCloseable {
     private int closed;
 
     public static void main(String[] args) {
-        new StackTraceDemo().dumpThreads();
+        new StackTraceDemo().dumpThreads(new Exception());
     }
 
     // Report where threads are still running
