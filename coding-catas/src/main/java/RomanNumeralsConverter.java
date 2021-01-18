@@ -7,6 +7,15 @@
 public class RomanNumeralsConverter {
 
     static int convert(String romanLiteral) {
-        return 1;
+        if (romanLiteral.equalsIgnoreCase("I")) {
+            return 1;
+        }
+        if (romanLiteral.equalsIgnoreCase("V")) {
+            return 5;
+        }
+        if (romanLiteral.equalsIgnoreCase("X")) {
+            return 10;
+        }
+        return 0;
     }
 }

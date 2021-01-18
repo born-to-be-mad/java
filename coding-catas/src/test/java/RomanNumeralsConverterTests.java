@@ -18,8 +18,11 @@ public class RomanNumeralsConverterTests {
 
     @Test
     public void convertsSingleRomanDigit() {
-        int arabic = RomanNumeralsConverter.convert("I");
-        assertEquals(1, arabic);
+        assertEquals(1, RomanNumeralsConverter.convert("I"));
+
+        assertEquals(5, RomanNumeralsConverter.convert("V"));
+
+        assertEquals(10, RomanNumeralsConverter.convert("X"));
     }
 
 }
