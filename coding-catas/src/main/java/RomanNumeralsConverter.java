@@ -10,6 +10,15 @@ public class RomanNumeralsConverter {
         if (romanLiteral.equalsIgnoreCase("I")) {
             return 1;
         }
+        if (romanLiteral.equalsIgnoreCase("II")) {
+            return 2;
+        }
+        if (romanLiteral.equalsIgnoreCase("III")) {
+            return 3;
+        }
+        if (romanLiteral.equalsIgnoreCase("IV")) {
+            return 4;
+        }
         if (romanLiteral.equalsIgnoreCase("V")) {
             return 5;
         }
