@@ -16,6 +16,18 @@ public class RomanNumeralsConverter {
         if (romanLiteral.equalsIgnoreCase("X")) {
             return 10;
         }
+        if (romanLiteral.equalsIgnoreCase("L")) {
+            return 50;
+        }
+        if (romanLiteral.equalsIgnoreCase("C")) {
+            return 100;
+        }
+        if (romanLiteral.equalsIgnoreCase("D")) {
+            return 500;
+        }
+        if (romanLiteral.equalsIgnoreCase("M")) {
+            return 1000;
+        }
         return 0;
     }
 }
