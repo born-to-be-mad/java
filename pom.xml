@@ -46,6 +46,7 @@
         <module>regexp</module>
         <module>java-quizzes</module>
         <module>lambda-patterns</module>
+        <module>coding-catas</module>
         <module>how-to</module>
         <module>concurrency</module>
         <module>collections</module>
