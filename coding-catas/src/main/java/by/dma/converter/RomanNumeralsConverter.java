@@ -1,3 +1,5 @@
+package by.dma.converter;
+
 /**
  * Converts Roman numerals to Arabic numerals.
  *
@@ -7,7 +9,10 @@
 public class RomanNumeralsConverter {
 
     static int convert(String romanLiteral) {
-        if (romanLiteral.length() == 1) { return convertSingleDigit(romanLiteral); }
+        if (romanLiteral.length() == 1) {
+            return convertSingleDigit(romanLiteral);
+        }
+
         if (romanLiteral.equalsIgnoreCase("II")) {
             return 2;
         }
