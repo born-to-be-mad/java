@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class GildedRoseTest {
 
-    public static final String DUMMY_NAME = "foo";
+    private static final String DUMMY_NAME = "foo";
 
     @Test
     void systemLowersValues() {
