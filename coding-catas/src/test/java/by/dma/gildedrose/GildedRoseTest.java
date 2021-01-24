@@ -109,6 +109,12 @@ class GildedRoseTest {
         assertEquals(GildedRose.MAXIMUM_QUALITY, item.quality);
     }
 
+    @Test
+    void conjuredDegradeTwiceAsFast() {
+        Item item = createAndUpdateItem(GildedRose.CONJURED, 15, 25);
+        assertEquals(23, item.quality);
+    }
+
     private Item createAndUpdateItem(String name, int sellIn, int quality) {
         Item[] items = new Item[] {new Item(name, sellIn, quality)};
         GildedRose app = new GildedRose(items);

@@ -14,6 +14,7 @@ class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String CONJURED = "Conjured";
 
     Item[] items;
 
@@ -27,8 +28,17 @@ class GildedRose {
             handleIfAgedBrie(item);
             handleIfBackstagePasses(item);
             handleIfSulfuras(item);
+            handleIfConjured(item);
         }
     }
+
+    private void handleIfConjured(Item item) {
+        if (isConjured(item)) {
+            item.sellIn--;
+            item.quality = item.quality - 2;
+        }
+    }
+
     private void handleIfSulfuras(Item item) {
         if (isSulfuras(item)) {
             // We always write the least amount of code to make the pin-down tests go green.
@@ -76,12 +86,15 @@ class GildedRose {
             } else {
                 item.quality--;
             }
-            if (item.quality < 0) item.quality = 0;
+            if (item.quality < 0) { item.quality = 0; }
         }
     }
 
     private boolean isNormalItem(Item item) {
-        return !(isAgedBrie(item) || isBackstagePasses(item) || isSulfuras(item));
+        return !(isAgedBrie(item)
+                 || isBackstagePasses(item)
+                 || isSulfuras(item)
+                 || isConjured(item));
     }
 
     private boolean isAgedBrie(Item item) {
@@ -94,5 +107,9 @@ class GildedRose {
 
     private boolean isBackstagePasses(Item item) {
         return item.name.equals(BACKSTAGE_PASSES);
+    }
+
+    private boolean isConjured(Item item) {
+        return item.name.equals(CONJURED);
     }
 }
