@@ -36,3 +36,22 @@ for you).
 
 Just for clarification, an item can never have its Quality increase above 50, however "Sulfuras" is a
 legendary item and as such its Quality is 80 and it never alters.
+
+###########################################
+
+Refactoring techniques to use:
+- Rename variable
+- Rename method
+- Make method static
+- Move method
+- Move class
+- Inline code
+- Extract method
+- Extract constant
+- Extract variable
+- Change signature
+- Simplify arithmetic
+- Invert Boolean expression
+- Simplify Boolean expression
+- Group related business logic
+- Delete unused code
