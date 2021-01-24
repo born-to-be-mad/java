@@ -26,6 +26,12 @@ class GildedRose {
             final Item item = items[i];
             if (isNormalItem(item)) {
                 handleNormalItem(item);
+            } else if (isAgedBrie(item)) {
+                handleAgedBrie(item);
+            } else if (isBackstagePasses(item)) {
+                handleBackstagePasses(item);
+            } else if (isSulfuras(item)) {
+                handleSulfuras(item);
             } else {
                 if (isAgedBrie(item) || isBackstagePasses(item)) {
                     if (item.quality < MAXIMUM_QUALITY) {
@@ -80,6 +86,39 @@ class GildedRose {
                     }
                 }
             }
+        }
+    }
+
+    private void handleSulfuras(Item item) {
+        // We always write the least amount of code to make the pin-down tests go green.
+        // In this case, we didn't have to write any code for the moment.
+    }
+
+    private void handleBackstagePasses(Item item) {
+        item.sellIn--;
+        if (item.sellIn <= 0) {
+            item.quality = 0;
+        } else if (item.sellIn < BACKSTAGE_PASS_THRESHOLD2) {
+            item.quality = item.quality + 3;
+        } else if (item.sellIn < BACKSTAGE_PASS_THRESHOLD1) {
+            item.quality = item.quality + 2;
+        } else {
+            item.quality++;
+        }
+        if (item.quality > MAXIMUM_QUALITY) {
+            item.quality = MAXIMUM_QUALITY;
+        }
+    }
+
+    private void handleAgedBrie(Item item) {
+        item.sellIn--;
+        if (item.sellIn <= 0) {
+            item.quality = item.quality + 2;
+        } else {
+            item.quality++;
+        }
+        if (item.quality > MAXIMUM_QUALITY) {
+            item.quality = MAXIMUM_QUALITY;
         }
     }
 
