@@ -9,9 +9,12 @@ package by.dma.gildedrose;
 class GildedRose {
 
     public static final int MAXIMUM_QUALITY = 50;
+    public static final int BACKSTAGE_PASS_THRESHOLD1 = 11;
+    public static final int BACKSTAGE_PASS_THRESHOLD2 = 6;
     public static final String AGED_BRIE = "Aged Brie";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -21,50 +24,56 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             final Item item = items[i];
-            if (isAgedBrie(item) || isBackstagePasses(item)) {
-                if (item.quality < MAXIMUM_QUALITY) {
-                    item.quality++;
-
-                    if (isBackstagePasses(item)) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < MAXIMUM_QUALITY) {
-                                item.quality++;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < MAXIMUM_QUALITY) {
-                                item.quality++;
-                            }
-                        }
-                    }
-                }
+            if (isNormalItem(item)) {
+                handleNormalItem(item);
             } else {
-                if (item.quality > 0) {
-                    if (isSulfuras(item)) {
-                        continue;
-                    }
-                    item.quality--;
-                }
-            }
-
-            if (isSulfuras(item)) {
-                continue;
-            }
-            item.sellIn = item.sellIn - 1;
-
-
-            if (item.sellIn < 0) {
-                if (isAgedBrie(item)) {
+                if (isAgedBrie(item) || isBackstagePasses(item)) {
                     if (item.quality < MAXIMUM_QUALITY) {
                         item.quality++;
+
+                        if (isBackstagePasses(item)) {
+                            if (item.sellIn < BACKSTAGE_PASS_THRESHOLD1) {
+                                if (item.quality < MAXIMUM_QUALITY) {
+                                    item.quality++;
+                                }
+                            }
+
+                            if (item.sellIn < BACKSTAGE_PASS_THRESHOLD2) {
+                                if (item.quality < MAXIMUM_QUALITY) {
+                                    item.quality++;
+                                }
+                            }
+                        }
                     }
                 } else {
-                    if (isBackstagePasses(item)) {
-                        item.quality = 0;
+                    if (item.quality > 0) {
+                        if (isSulfuras(item)) {
+                            continue;
+                        } else {
+                            item.quality--;
+                        }
+                    }
+                }
+
+                if (isSulfuras(item)) {
+                    continue;
+                } else {
+                    item.sellIn--;
+                }
+
+                if (item.sellIn < 0) {
+                    if (isAgedBrie(item)) {
+                        if (item.quality < MAXIMUM_QUALITY) {
+                            item.quality++;
+                        }
                     } else {
-                        if (item.quality > 0) {
-                            if (!isSulfuras(item)) {
+                        if (isBackstagePasses(item)) {
+                            item.quality = 0;
+                        } else {
+                            if (item.quality > 0) {
+                                if (isSulfuras(item)) {
+                                    continue;
+                                }
                                 item.quality--;
                             }
                         }
@@ -72,6 +81,20 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void handleNormalItem(Item item) {
+        item.sellIn--;
+        if (item.sellIn <= 0) {
+            item.quality -= 2;
+        } else {
+            item.quality--;
+        }
+        if (item.quality < 0) { item.quality = 0; }
+    }
+
+    private boolean isNormalItem(Item item) {
+        return !(isAgedBrie(item) || isBackstagePasses(item) || isSulfuras(item));
     }
 
     private boolean isAgedBrie(Item item) {
