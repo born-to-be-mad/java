@@ -55,3 +55,15 @@ Alternate forms
 `javac -p mods -d staff staff/zoo/staff/*.java staff/module-info.java`
 * Package 'zoo.animal.talks' module
 `jar -cvf  mods/zoo.staff.jar -C staff/ .`
+
+## module-info File details
+### exports
+It gives  more levels of access control using with modules.
+
+| Level | Within module code | Outside module |
+|-------|:-------------------|:---------------|
+|protected | Available only within package or to subclasses | Accessible to subclasses only if package is ex |
+|public |Available to all classes | Accessible only if package is exported |
+
+### requires transitive
+`transitive moduleName` it means that any module that requires this module will also depend on moduleName.
