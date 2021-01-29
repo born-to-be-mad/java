@@ -34,3 +34,20 @@ Alternate forms
 * `-v` or `--verbose`  - prints details when working with JAR files
 * `-f <fileName>` or `--file <fileName>` - defines JAR filename
 * `-C <directory>`  - defines a directory containing files to be used to create the JAR
+
+## Compiling Dependent Modules without dependencies
+### CARE module
+Compile/Recompile 'zoo.animal.care' from 'zoo' folder:
+* `javac -p mods -d care care/zoo/animal/care/details/*.java care/zoo/animal/care/medical/*.java care/module-info.java`
+
+### TALKS module
+* Compile/Recompile 'zoo.animal.talks' from 'zoo' folder:
+`javac -p mods -d talks talks/zoo/animal/talks/content/*.java talks/zoo/animal/talks/media/*.java talks/zoo/animal/talks/schedule/*.java talks/module-info.java`
+* Package 'zoo.animal.talks' module
+`jar -cvf mods/zoo.animal.talks.jar -C talks/ .`
+
+### STAFF module
+* Compile/Recompile 'zoo.animal.talks' from 'zoo' folder:
+`javac -p mods -d staff staff/zoo/staff/*.java staff/module-info.java`
+* Package 'zoo.animal.talks' module
+`jar -cvf  mods/zoo.staff.jar -C staff/ .`
