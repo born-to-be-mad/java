@@ -67,3 +67,9 @@ It gives  more levels of access control using with modules.
 
 ### requires transitive
 `transitive moduleName` it means that any module that requires this module will also depend on moduleName.
+
+### provides, uses, and opens
+* The `provides` keyword specifies that a class provides an implementation of a service.
+* The `uses` keyword specifies that a module is relying on a service
+* `opens`. Since reflection can be dangerous, the module system requires developers to explicitly allow reflection 
+  in the module-info if they want calling modules to be allowed to use it.
