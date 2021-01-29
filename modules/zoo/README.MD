@@ -9,6 +9,10 @@ Alternate forms:
 * `javac -p mods -d feeding feeding/zoo/animal/feeding/Task.java feeding/module-info.java`
 * `javac -p mods -d feeding feeding/zoo/animal/feeding/Task.java feeding/*.java`
 
+Describe the module
+* `java -p mods -d zoo.animal.feeding`
+* `java -p mods --describe-module zoo.animal.feeding`
+
 ### 'javac' options:
 * `-d <dir>` - Directory for class files
 * `-p <path>` or `--module-path <path>` - Module path
@@ -41,6 +45,8 @@ Alternate forms
 `javac -p mods -d care care/zoo/animal/care/details/*.java care/zoo/animal/care/medical/*.java care/module-info.java`
 * pack to jar
 `jar -cvf mods/zoo.animal.care.jar -C care/ .`
+* Describe the module
+`java -p mods -d zoo.animal.care`
 
 ### TALKS module
 * Compile/Recompile 'zoo.animal.talks' from 'zoo' folder:
@@ -73,3 +79,23 @@ It gives  more levels of access control using with modules.
 * The `uses` keyword specifies that a module is relying on a service
 * `opens`. Since reflection can be dangerous, the module system requires developers to explicitly allow reflection 
   in the module-info if they want calling modules to be allowed to use it.
+  
+## Listing modules
+* `java --list-modules` lists modules in JDK
+* `java -p mods --list-modules` lists JDK + own modules
+* `java --show-module-resolution -p feeding -m zoo.animal.feeding/zoo.animal.feeding.Task` runs a program with Module Resolution 
+* `jar -f mods/zoo.animal.feeding.jar -d` or `jar --file mods/zoo.animal.feeding.jar --describe-module` describes a module in jar-file 
+* `jdeps -s mods/zoo.animal.feeding.jar` or `jdeps -summary mods/zoo.animal.feeding.jar` tells what dependencies are actually used rather than simply declared.
+
+
+## The jmod Command
+Oracle recommends using JAR files for most modules.
+JMOD files are recommended only when you have native libraries or something that can’t go inside a JAR file.
+
+| Operation | Description |
+|-------|:-------------------|
+| create |Creates a JMOD file.|
+| extract |Extracts all files from the JMOD. Works like unzipping.|
+| describe |Prints the module details such as requires.|
+| list |Lists all files in the JMOD file.|
+| hash |Shows a long string that goes with the file|
