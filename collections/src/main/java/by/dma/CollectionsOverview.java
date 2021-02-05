@@ -1,6 +1,7 @@
 package by.dma;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -54,6 +55,10 @@ public class CollectionsOverview {
         System.out.println("Thread-safe Implementation Classes");
         threadSafeImplementation.forEach(System.out::println);
 
+        interfaces.forEach(CollectionsOverview::printClassInfo);
+        implementations.forEach(CollectionsOverview::printClassInfo);
+        threadSafeImplementation.forEach(CollectionsOverview::printClassInfo);
+
         //Collections.synchronizedInterface = synchronized (thread-safe) WRAPPERS
         java.util.Collections.synchronizedCollection(List.of(1));
         java.util.Collections.synchronizedSet(Set.of(1));
@@ -78,9 +83,20 @@ public class CollectionsOverview {
         java.util.Collections.checkedSortedSet(new TreeSet<>(), Integer.class);
         java.util.Collections.checkedSortedMap(new TreeMap<>(), Integer.class, Integer.class);
 
-        interfaces.forEach(CollectionsOverview::printClassInfo);
-        implementations.forEach(CollectionsOverview::printClassInfo);
-        threadSafeImplementation.forEach(CollectionsOverview::printClassInfo);
+        // ADAPTERS
+        java.util.Collections.newSetFromMap(Map.of(1, true));
+        java.util.Collections.asLifoQueue(new LinkedList<>(List.of(1, 2, 3));
+        java.util.Arrays.asList(new int[] {1, 2, 3});
+
+        java.util.Collections.emptySet();
+        java.util.Collections.emptyList();
+        java.util.Collections.emptyMap();
+
+        java.util.Collections.singleton(1);
+        java.util.Collections.singletonList(1);
+        java.util.Collections.singletonMap(Map.of(1, 2);
+
+        java.util.Collections.nCopies(1,5);
     }
 
     private static void printClassInfo(Class<?> clazz) {
