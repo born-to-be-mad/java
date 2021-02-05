@@ -51,10 +51,12 @@ public class StreamBestUtils {
         return () -> new Iterator<>() {
             int cursor = fromInclusive;
 
+            @Override
             public boolean hasNext() {
                 return cursor < toExclusive;
             }
 
+            @Override
             public Integer next() {
                 return cursor++;
             }
