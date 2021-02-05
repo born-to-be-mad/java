@@ -3,6 +3,7 @@ package streams;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -37,6 +38,28 @@ import static java.util.stream.Collectors.toMap;
  * @since 2020.3
  */
 public class StreamBestUtils {
+
+    /**
+     * Returns the range of integers.
+     *
+     * @param fromInclusive start value(inclusive)
+     * @param toExclusive   end value(exclusive)
+     * @return Iterable, containing numbers from fromInclusive to toExclusive.
+     */
+    public static Iterable<Integer> range(int fromInclusive,
+                                          int toExclusive) {
+        return () -> new Iterator<>() {
+            int cursor = fromInclusive;
+
+            public boolean hasNext() {
+                return cursor < toExclusive;
+            }
+
+            public Integer next() {
+                return cursor++;
+            }
+        };
+    }
 
     /**
      * Make the source of child nodes for the given parent DOM XML node.
