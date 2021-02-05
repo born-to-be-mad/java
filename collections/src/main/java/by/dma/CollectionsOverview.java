@@ -85,7 +85,7 @@ public class CollectionsOverview {
 
         // ADAPTERS
         java.util.Collections.newSetFromMap(Map.of(1, true));
-        java.util.Collections.asLifoQueue(new LinkedList<>(List.of(1, 2, 3));
+        java.util.Collections.asLifoQueue(new LinkedList<>(List.of(1, 2, 3)));
         java.util.Arrays.asList(new int[] {1, 2, 3});
 
         java.util.Collections.emptySet();
@@ -94,7 +94,7 @@ public class CollectionsOverview {
 
         java.util.Collections.singleton(1);
         java.util.Collections.singletonList(1);
-        java.util.Collections.singletonMap(Map.of(1, 2);
+        java.util.Collections.singletonMap(1, 2);
 
         java.util.Collections.nCopies(1,5);
     }
