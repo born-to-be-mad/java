@@ -33,10 +33,13 @@ public class CollectionsOverview {
                 java.util.LinkedList.class,
                 java.util.HashSet.class,
                 java.util.TreeSet.class,
+                java.util.BitSet.class,
+                java.util.EnumSet.class,
                 java.util.PriorityQueue.class,
                 java.util.HashMap.class,
                 java.util.TreeMap.class,
-                java.util.LinkedHashMap.class
+                java.util.LinkedHashMap.class,
+                java.util.EnumMap.class
         );
         List<Class<?>> threadSafeImplementation = Arrays.asList(
                 java.util.concurrent.CopyOnWriteArrayList.class,
@@ -51,7 +54,7 @@ public class CollectionsOverview {
         System.out.println("Thread-safe Implementation Classes");
         threadSafeImplementation.forEach(System.out::println);
 
-        //synchronized (thread-safe) WRAPPERS
+        //Collections.synchronizedInterface = synchronized (thread-safe) WRAPPERS
         java.util.Collections.synchronizedCollection(List.of(1));
         java.util.Collections.synchronizedSet(Set.of(1));
         java.util.Collections.synchronizedList(List.of(1));
@@ -59,13 +62,21 @@ public class CollectionsOverview {
         java.util.Collections.synchronizedSortedSet(new TreeSet<>());
         java.util.Collections.synchronizedSortedMap(new TreeMap<>());
 
-        //Unmodifiable WRAPPERS
-        java.util.Collections.unmodifiableCollection(List.of(1L));
+        //Collections.unmodifiableInterface = Unmodifiable WRAPPERS
+        java.util.Collections.unmodifiableCollection(List.of(1));
         java.util.Collections.unmodifiableSet(Set.of(1));
         java.util.Collections.unmodifiableList(List.of(1));
         java.util.Collections.unmodifiableMap(Map.of(1, 2));
         java.util.Collections.unmodifiableSortedSet(new TreeSet<>());
         java.util.Collections.unmodifiableSortedMap(new TreeMap<>());
+
+        //Collections.checkedInterface = typesafe view of the specified collection
+        java.util.Collections.checkedCollection(List.of(1), Integer.class);
+        java.util.Collections.checkedSet(Set.of(1), Integer.class);
+        java.util.Collections.checkedList(List.of(1), Integer.class);
+        java.util.Collections.checkedMap(Map.of(1, 2), Integer.class, Integer.class);
+        java.util.Collections.checkedSortedSet(new TreeSet<>(), Integer.class);
+        java.util.Collections.checkedSortedMap(new TreeMap<>(), Integer.class, Integer.class);
 
         interfaces.forEach(CollectionsOverview::printClassInfo);
         implementations.forEach(CollectionsOverview::printClassInfo);
