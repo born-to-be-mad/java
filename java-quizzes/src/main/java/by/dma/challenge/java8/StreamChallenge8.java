@@ -1,4 +1,4 @@
-package by.dma.challenge;
+package by.dma.challenge.java8;
 
 import java.util.stream.IntStream;
 
