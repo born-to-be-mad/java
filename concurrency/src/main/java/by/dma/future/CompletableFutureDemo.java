@@ -54,34 +54,7 @@ public class CompletableFutureDemo {
                                 .collect(joining(" "));
         System.out.println(combined);
 
-        System.out.println("### HANDLING ERRORS ###");
-        String name = null;
-        CompletableFuture<String> completableFutureWithError =  CompletableFuture.supplyAsync(() -> {
-            if (name == null) {
-                throw new RuntimeException("Computation error!");
-            }
-            return "Hello, " + name;
-        }).handle((s, t) -> s != null ? s : "Hello, Stranger!");
-        System.out.println(completableFutureWithError.get());
 
-
-        System.out.println("### FUTURE CALCULATION ###");
-        Future<Integer> squareTen = new SquareCalculator().calculate(10);
-
-        while(!squareTen.isDone()) {
-            System.out.println("Calculating...");
-            Thread.sleep(300);
-        }
-        System.out.println("Result:" + squareTen.get());
-
-/*        Future<Integer> squareFour = new SquareCalculator().calculate(4);
-        squareFour.cancel(true);
-        System.out.println("Result:" + squareFour.get());*/
-
-        ForkJoinPool forkJoinPool = new ForkJoinPool();
-        FactorialSquareCalculator calculator = new FactorialSquareCalculator(1234);
-        forkJoinPool.execute(calculator);
-        System.out.println("Result of 1234*1234:" + calculator.get());
     }
 
     public Future<String> calculateAsync() {
