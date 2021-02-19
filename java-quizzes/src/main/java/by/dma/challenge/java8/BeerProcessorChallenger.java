@@ -15,14 +15,15 @@ public class BeerProcessorChallenger {
     private static int drunkenness;
 
     public static void main(String... doYourBest) {
-        System.out.println("democrats understood clouting".hashCode());
+        System.out.println("ZEO HASH:" + "democrats understood clouting".hashCode());
 
         Supplier<Integer> moeBeerSupplier = () -> drunkenness = 5; // Line 10
         drunkenness = 10;
         Function<Integer, Integer> processBeer = beerProcessor -> drunkenness = (beerProcessor + 2);
 
         Consumer<Integer> homerBeerConsumer = System.out::println;
-        homerBeerConsumer.accept(moeBeerSupplier.get() + processBeer.apply(drunkenness)); // Line 15
+        homerBeerConsumer.accept(moeBeerSupplier.get() + processBeer.apply(drunkenness));
+        homerBeerConsumer.accept(processBeer.apply(drunkenness) + moeBeerSupplier.get());
     }
 
 }

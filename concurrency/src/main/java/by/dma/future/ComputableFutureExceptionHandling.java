@@ -29,12 +29,12 @@ public class ComputableFutureExceptionHandling {
 
 /*        System.out.println("#### delete SYNCH #####");
         new ComputableFutureExceptionHandling().deleteSynch(fileServers);*/
-/*        System.out.println("#### delete ASYNCH via POOL SUBMIT #####");
+        System.out.println("#### delete ASYNCH via POOL SUBMIT #####");
         new ComputableFutureExceptionHandling().deleteAsynchThroughPoolSubmission(
-                fileServers, Executors.newSingleThreadExecutor());*/
-        System.out.println("#### delete ASYNCH via FUTURE #####");
+                fileServers, Executors.newSingleThreadExecutor());
+/*        System.out.println("#### delete ASYNCH via FUTURE #####");
         new ComputableFutureExceptionHandling().deleteAsynchThroughFuture(
-                fileServers, Executors.newCachedThreadPool());
+                fileServers, Executors.newCachedThreadPool());*/
     }
 
     private void deleteAsynchThroughPoolSubmission(List<FileServer> fileServers, ExecutorService pool) {
