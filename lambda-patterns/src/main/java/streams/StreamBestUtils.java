@@ -43,10 +43,20 @@ public class StreamBestUtils {
      * Adapter from Stream<E> to Iterable<E>.
      *
      * @param stream source stream of elements
-     * @return Iterable from Stream.
+     * @return an Iterable from Stream.
      */
     public static <E> Iterable<E> iterableOf(Stream<E> stream) {
         return stream::iterator;
+    }
+
+    /**
+     * Adapter from Iterable<E> to Stream<E>.
+     *
+     * @param iterable an iterable
+     * @return Stream a stream of elements.
+     */
+    public static <E> Stream<E> streamOf(Iterable<E> iterable) {
+        return StreamSupport.stream(iterable.spliterator(), false);
     }
 
     /**
