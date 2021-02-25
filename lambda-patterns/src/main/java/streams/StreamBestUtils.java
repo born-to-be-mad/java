@@ -40,6 +40,16 @@ import static java.util.stream.Collectors.toMap;
 public class StreamBestUtils {
 
     /**
+     * Adapter from Stream<E> to Iterable<E>.
+     *
+     * @param stream source stream of elements
+     * @return Iterable from Stream.
+     */
+    public static <E> Iterable<E> iterableOf(Stream<E> stream) {
+        return stream::iterator;
+    }
+
+    /**
      * Returns the range of integers.
      *
      * @param fromInclusive start value(inclusive)
