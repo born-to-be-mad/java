@@ -7,6 +7,16 @@ import java.util.stream.IntStream;
  * Use:
  * `jps` to see the list of java processes
  * `jstack -l PROCESS_ID` to dump process.
+ *
+ * To provide thread-safe initialization of classes,  JVM uses synchronization on `invisible initialization` lock
+ * that each class has.
+ *
+ * Inaccurate writing of initializers can lead to deadlocks.
+ * To avoid this:
+ * - make sure that static initializers do not refer to other uninitialized classes;
+ * - do not create instances of child classes in static initializers;
+ * - do not create threads and avoid concurrent code execution in static initializers;
+ * - trust no one; study the source code and report bugs found in third-party projects.
  */
 public class StreamSumDeadlock {
 
