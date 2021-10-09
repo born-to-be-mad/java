@@ -11,6 +11,12 @@ public class NonBlockingStack<T> {
 
     private final AtomicReference<Element> head = new AtomicReference<>(null);
 
+    /**
+     * Adds element to the stack.
+     *
+     * @param value the value to add
+     * @return the stack
+     */
     public NonBlockingStack<T> push(final T value) {
         var current = new Element();
         current.value = value;
@@ -23,7 +29,12 @@ public class NonBlockingStack<T> {
         return this;
     }
 
-    T pop() {
+    /**
+     * Pops element from the stack.
+     *
+     * @return the value on the head
+     */
+    public T pop() {
         Element result;
         Element previous;
         do {
