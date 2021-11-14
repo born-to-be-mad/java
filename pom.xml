@@ -51,6 +51,7 @@
         <module>concurrency</module>
         <module>collections</module>
         <module>certification</module>
+        <module>interview</module>
     </modules>
 
     <profiles>
