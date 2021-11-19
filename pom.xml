@@ -49,7 +49,7 @@
         <module>coding-catas</module>
         <module>how-to</module>
         <module>concurrency</module>
-        <module>collections</module>
+        <module>data-structures</module>
         <module>certification</module>
         <module>interview</module>
     </modules>
@@ -129,14 +129,14 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.8.1</version>
+            <version>3.12.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
+            <version>1.4</version>
         </dependency>
 
 
