@@ -25,24 +25,23 @@ public class SetsFromMaps {
 
     public static void main(String[] args) {
         Set<?>[] sets = {
-                new ConcurrentSkipListSet<>(), // java 6
-                new CopyOnWriteArraySet<>(),  // java 5
                 new HashSet<>(), //java 2
-                new LinkedHashSet<>(), //java 4
                 new TreeSet<>(), //java 2
+                new LinkedHashSet<>(), //java 4
+                new CopyOnWriteArraySet<>(),  // java 5
                 EnumSet.allOf(Thread.State.class), // java 5
-                ConcurrentHashMap.newKeySet(), //java 8
+                new ConcurrentSkipListSet<>(), // java 6
                 Collections.newSetFromMap(new ConcurrentHashMap<>()), //java 6
-                new CopyOnWriteArraySet<>() // java 5
+                ConcurrentHashMap.newKeySet(), //java 8
         };
         System.out.println("Available sets in java:");
         Arrays.stream(sets).forEach(set -> System.out.println(set.getClass().getName()));
 
         Map<?, ?>[] maps = {
-                new ConcurrentHashMap<>(), //java 5
                 new Hashtable<>(), // java 1
-                new IdentityHashMap<>(), // java 4
                 new WeakHashMap<>() //java 2
+                new IdentityHashMap<>(), // java 4
+                new ConcurrentHashMap<>(), //java 5
 
         };
         System.out.println("Available maps in java:");
