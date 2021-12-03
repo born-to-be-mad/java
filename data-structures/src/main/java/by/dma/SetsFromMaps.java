@@ -32,17 +32,16 @@ public class SetsFromMaps {
                 EnumSet.allOf(Thread.State.class), // java 5
                 new ConcurrentSkipListSet<>(), // java 6
                 Collections.newSetFromMap(new ConcurrentHashMap<>()), //java 6
-                ConcurrentHashMap.newKeySet(), //java 8
+                ConcurrentHashMap.newKeySet() //java 8
         };
         System.out.println("Available sets in java:");
         Arrays.stream(sets).forEach(set -> System.out.println(set.getClass().getName()));
 
         Map<?, ?>[] maps = {
                 new Hashtable<>(), // java 1
-                new WeakHashMap<>() //java 2
+                new WeakHashMap<>(), //java 2
                 new IdentityHashMap<>(), // java 4
-                new ConcurrentHashMap<>(), //java 5
-
+                new ConcurrentHashMap<>() //java 5
         };
         System.out.println("Available maps in java:");
         Arrays.stream(maps).forEach(map -> System.out.println(map.getClass().getName()));

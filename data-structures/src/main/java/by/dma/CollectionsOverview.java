@@ -1,5 +1,6 @@
 package by.dma;
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -101,6 +102,8 @@ public class CollectionsOverview {
 
     private static void printClassInfo(Class<?> clazz) {
         System.out.printf("%1$s%n#### %2$-40s ####%n%1$s%n", "#".repeat(50), clazz);
-        Arrays.stream(clazz.getMethods()).forEach(System.out::println);
+        for (Method method : clazz.getMethods()) {
+            System.out.println(method);
+        }
     }
 }
