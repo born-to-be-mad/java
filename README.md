@@ -12,3 +12,6 @@
 * *reg-exp*
 
 * *java11-lambda*  
+
+## Issues
+`--add-opens java.base/java.util=ALL-UNNAMED` add this as VM options if you want to use reflection f.e. error: `module java.base does not "opens java.util" to unnamed module`
