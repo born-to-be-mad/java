@@ -1,4 +1,4 @@
-package by.dma;
+package by.dma.sets;
 
 import java.util.Arrays;
 import java.util.Collections;
