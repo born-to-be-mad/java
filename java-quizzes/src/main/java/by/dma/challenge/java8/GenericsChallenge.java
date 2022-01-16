@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Quize to learn details about working with Generics in Java.
+ * Quiz to learn details about working with Generics in Java.
  *
  * @author dzmitry.marudau
  * @since 2020.3

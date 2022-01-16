@@ -3,6 +3,7 @@ package by.dma.challenge.java10;
 /**
  * Quiz on Threads.
  * You will learn how to store data isolated by different Threads to avoid collision of data.
+ * The LocalThread class basically isolates one value in the current Thread that is being executed.
  *
  * @author dzmitry.marudau
  * @since 2020.3
