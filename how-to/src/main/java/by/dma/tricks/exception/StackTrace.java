@@ -1,12 +1,14 @@
 package by.dma.tricks.exception;
 
 /**
- * Container holds the stack trace. It is useful for monitoring and reporting.
+ * Container that captures the stack trace.
+ * It is useful for monitoring and reporting.
  *
  * @author dzmitry.marudau
  * @since 2020.4
  */
 public class StackTrace extends Throwable {
+
     public StackTrace() {
         this("stack trace");
     }
