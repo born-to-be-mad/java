@@ -8,6 +8,10 @@ package by.dma.tricks.exception;
  */
 public class LightException  extends Exception {
 
+    public LightException() {
+        this(null, null);
+    }
+
     public LightException(String message, Throwable cause) {
         super(message, cause, true, false);
     }

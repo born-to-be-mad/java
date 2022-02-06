@@ -2,8 +2,6 @@ package by.dma.tricks.exception;
 
 import java.util.NoSuchElementException;
 
-import com.sun.jdi.StackFrame;
-
 /**
  * StackWalker to as modern way to deal with stack traces.
  *
@@ -23,10 +21,10 @@ public class StackWalkerDemo {
         stackWalker.forEach(System.out::println);
     }
 
-    public static StackFrame getCallerFrame() {
-        StackWalker.getInstance()
-                   .walk(stackFrameStream -> stackFrameStream.skip(2).findFirst())
-                   .orElseThrow(NoSuchElementException::new);
+    public static StackWalker.StackFrame getCallerFrame() {
+        return StackWalker.getInstance()
+                          .walk(stackFrameStream -> stackFrameStream.skip(2).findFirst())
+                          .orElseThrow(NoSuchElementException::new);
     }
 
 }
