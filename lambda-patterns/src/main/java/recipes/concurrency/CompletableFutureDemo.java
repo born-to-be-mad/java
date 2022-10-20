@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  **/
 public class CompletableFutureDemo {
     private Map<Integer, Product> cache = new HashMap<>();
-    private static Logger logger = Logger.getLogger(CompletableFutureDemo.class.getName());
+    private static final Logger logger = Logger.getLogger(CompletableFutureDemo.class.getName());
 
     public static void main(String[] args) {
         ExecutorService service = Executors.newFixedThreadPool(4);
