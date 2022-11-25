@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 public class LazyInitializationDemo {
+
     public static void main(String[] args) {
         final Lazy<Integer> lazyA = new Lazy<>(() -> computeValue(100));
         final Lazy<Integer> lazyB = new Lazy<>(() -> computeValue(10));
@@ -19,10 +20,10 @@ public class LazyInitializationDemo {
         System.out.println("End");
 
         System.out.println("Laziness is part of Java, thanks to functional programming!");
-        //No tranforming at all!
+        // No transforming at all!
         Arrays.asList(1, 2, 3, 4, 5).stream()
-                .filter(num -> num % 2 == 0)
-                .map(LazyInitializationDemo::transform);
+              .filter(num -> num % 2 == 0)
+              .map(LazyInitializationDemo::transform);
     }
 
     private static int transform(int number) {
@@ -38,6 +39,7 @@ public class LazyInitializationDemo {
 }
 
 class Lazy<T> {
+
     private Supplier<T> supplier;
     private T instance;
 
