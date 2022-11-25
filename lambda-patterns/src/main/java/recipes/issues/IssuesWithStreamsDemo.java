@@ -36,10 +36,10 @@ public class IssuesWithStreamsDemo {
         System.out.println("### Stream of secure random numbers ###");
         createStreamOfRandomNumbers(new SecureRandom());
 
-        System.out.println("### Fibonachi calculation with cache ###");
-        FibonaciProducer fibonaciProducer = new FibonaciProducer();
+        System.out.println("### Fibonacci calculation with cache ###");
+        FibonacciProducer fibonacciProducer = new FibonacciProducer();
         IntStream.rangeClosed(1, 10)
-                .forEach(n -> System.out.printf("%d fibonachi = %s%n", n, fibonaciProducer.get(n)));
+                .forEach(n -> System.out.printf("%d fibonacci = %s%n", n, fibonacciProducer.get(n)));
 
         System.out.println("### Count words in the phrase ###");
         String phrase = "To be or not to be? That is the question."
@@ -90,10 +90,10 @@ public class IssuesWithStreamsDemo {
 
     private static Map<String, Integer> countWords(String phrase, String... words) {
         Map<String, Integer> wordCounts = new HashMap<>();
-        Arrays.stream(words).forEach(s -> wordCounts.put(s, 0));
+        Arrays.stream(words)
+              .forEach(s -> wordCounts.put(s, 0));
         Arrays.stream(phrase.split("\\s+"))
-                .forEach(word ->
-                        wordCounts.computeIfPresent(word, (key, val) -> val + 1));
+              .forEach(word -> wordCounts.computeIfPresent(word, (key, val) -> val + 1));
         return wordCounts;
     }
 
@@ -101,7 +101,7 @@ public class IssuesWithStreamsDemo {
         Map<String, Integer> wordCounts = new HashMap<>();
         String testString = phrase.toLowerCase().replaceAll("\\W", " ");
         Arrays.stream(testString.split("\\s+"))
-                .forEach(word -> wordCounts.merge(word, 1, Integer::sum));
+              .forEach(word -> wordCounts.merge(word, 1, Integer::sum));
         return wordCounts;
     }
 }

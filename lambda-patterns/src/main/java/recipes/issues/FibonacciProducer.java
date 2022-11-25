@@ -3,13 +3,14 @@ package recipes.issues;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * @author : Dzmitry Marudau
  * @created at : 00:32
  * @since : 2019.07
  **/
-public class FibonaciProducer {
+public class FibonacciProducer {
 
     private Map<Long, BigInteger> cache = new HashMap<>();
 
