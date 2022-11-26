@@ -2,18 +2,23 @@ package patterns;
 
 import java.util.function.Consumer;
 
+/**
+ * Confluent method companions.
+ */
 public class CascadeMethodPatternDemo {
+
     public static void main(String[] args) {
-        Mailer.send(mailer ->
-                mailer.from("test@test.com")
-                        .to("admin@test.com")
-                        .subject("bad example")
-                        .body("do not send such ")
+        Mailer.send(mailer -> mailer
+                .from("test@test.com")
+                .to("admin@test.com")
+                .subject("bad example")
+                .body("do not send such ")
         );
     }
 }
 
 final class Mailer {
+
     private Mailer() {
     }
 
