@@ -2,6 +2,7 @@ package patterns;
 
 import java.awt.Color;
 import java.util.function.Function;
+import java.util.function.IntFunction;
 import java.util.stream.Stream;
 
 @SuppressWarnings("unchecked")
@@ -28,7 +29,10 @@ public class DecoratorDemo {
     }
 }
 
-//Camera can have different filter modules
+    /**
+     * Camera can have different filter modules.
+     */
+
 @SuppressWarnings("unchecked")
 class Camera {
     private Function<Color, Color> filter;
