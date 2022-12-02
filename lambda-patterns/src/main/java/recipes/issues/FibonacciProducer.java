@@ -3,7 +3,6 @@ package recipes.issues;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 /**
  * @author : Dzmitry Marudau
@@ -12,7 +11,7 @@ import java.util.stream.Stream;
  **/
 public class FibonacciProducer {
 
-    private Map<Long, BigInteger> cache = new HashMap<>();
+    private Map<Long, BigInteger> CACHE = new HashMap<>();
 
     public BigInteger get(long i) {
         if (i == 0) {
@@ -21,7 +20,7 @@ public class FibonacciProducer {
         if (i == 1) {
             return BigInteger.ONE;
         }
-        return cache
+        return CACHE
                 .computeIfAbsent(i, n -> get(n - 2).add(get(n - 1)));
     }
 }
