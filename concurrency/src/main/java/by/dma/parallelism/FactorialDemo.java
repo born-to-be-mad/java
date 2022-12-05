@@ -21,6 +21,8 @@ public class FactorialDemo {
     public static final int TRIES = 10;
 
     public static void main(String... args) {
+
+
         record Pair(String description, BinaryOperator<BigInteger> operator) {
 
         }
