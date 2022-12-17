@@ -36,19 +36,19 @@ public class CountDownLatchDemo {
 class SimpleService implements Runnable {
 
     private final String name;
-    private final int delay;
+    private final int duration;
     private final CountDownLatch latch;
 
-    public SimpleService(String name, int delay, CountDownLatch latch) {
+    public SimpleService(String name, int duration, CountDownLatch latch) {
         this.name = name;
-        this.delay = delay;
+        this.duration = duration;
         this.latch = latch;
     }
 
     @Override
     public void run() {
         try {
-            Thread.sleep(delay);
+            Thread.sleep(duration);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
