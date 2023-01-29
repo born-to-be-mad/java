@@ -21,6 +21,7 @@ public class CyclicBarrierDemo {
         }
 
         System.out.println(Thread.currentThread().getName() + " has finished");
+        
     }
 
     private static int getDelay() {
